@@ -1,6 +1,7 @@
 let search = document.getElementsByClassName('search')[0]
 let mails = document.getElementsByClassName('mails')[0]
 string = ''
+let work = false
 if (localStorage.getItem('string')!=null){
 string = localStorage.getItem('string')}
 if (string == ''){
@@ -26,6 +27,21 @@ document.onkeyup = function(event){
     if (event.keyCode == 220 & search == document.activeElement & search.value!=''){
         search.value = ''
     }
+}
+function webbby(){
+    setInterval(function(){
+        let r = random(1,3)
+        if(r==1){
+            web('Ты уже долго работаешь, пора бы отдохнуть)')
+        }
+        if(r==2){
+            web('Пить много воды полезно, лучше работает мозг')
+        }
+        if(r==3){
+            web('Предлагаю отдохнуть и выпить кружечку чая')
+
+        }
+    }, 3600000)
 }
 function wait(t,n = 1){
     setTimeout(function(){
@@ -53,6 +69,9 @@ function element(t){
         audio.src = './sounds/sound.mp3'
         audio.autoplay = true
     },300)}
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 function user(t){
     setTimeout(function(){
     string+=`<div class="right">
@@ -105,6 +124,7 @@ function sms(text){
     setTimeout(function(){
     if (text == 'привет'){
         web(t = 'Ну привет)')
+        
     }
     if(text == 'clear' || text == 'clr'){
         web(t = 'Секунду...')
@@ -150,6 +170,36 @@ function sms(text){
         clip(t)
         web('Copied')
     }
+    if(text.split('')[0] == 'i' & text.split('')[1] == 'n'){
+        let m = 1000
+        if(text.split('in')[1]!=''){
+            m=text.split('in')[1]
+        }
+        web(t = `setInterval(function(){}, ${m})`)
+        clip(t)
+        web('Copied')
+    }
+    if (text == 'webbby' & work == false){
+        work = true
+        webbby()
+        let r = random(1,3)
+        if(r == 3){
+            web('Привет! Чем займемся сегодня?')
+        }
+        if(r == 2){
+            web('Чувствую что сегодняшний день будет тяжелым')
+        }
+        if(r == 1){
+            web('И снова в работу!)')
+        }
+    }
+    if (text == 'tea'){
+        web('Выпей чаю)')
+        element(`<img src='https://cdn.dribbble.com/users/1686091/screenshots/7917582/media/d473833cef4b543a6111ebf651408582.gif' class = 'center'>`)
+    }
+
+/*
+
     if(text == 'relax'){
         wait('Как скажешь', 1)
         wait('Выбери что-нибудь', 2)
@@ -159,6 +209,7 @@ function sms(text){
         //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
         //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
     }
+*/
 }, 0)
     mails.scrollTop = mails.scrollHeight
 }
