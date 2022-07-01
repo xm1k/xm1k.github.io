@@ -52,14 +52,14 @@ body
 		width: 100%
 		display: flex
 		flex-direction: column
-		justify-content: flex-start
 		padding: 0 20%
 		padding-bottom: 20px
 		padding-top: 20px
-		overflow: auto
 		flex-grow: 0
 		max-width: 100%
 		min-width: 100%
+		justify-content: flex-start
+		overflow: auto
 	.left
 		align-self: flex-start
 		display: block
@@ -107,6 +107,23 @@ video
 	margin: 20px
 	border-radius: 20px
 	border: rgba(black, 0.1) 5px solid
+a
+	margin: 0 auto
+	font-size: 200%
+	font-weight: bold
+	width: 50%
+	height: 8%
+	border-radius: 15px
+	display: flex
+	justify-content: center
+	align-items: center
+	background-color: rgba(black, 0.4)
+	color: white
+	transition-duration: 1s
+	margin-bottom: 20px
+	&:hover
+		transition-duration: 1s
+		width: 45%
 @media screen and (max-width: 700px)
 	.content
 		width: 100%

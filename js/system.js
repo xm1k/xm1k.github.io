@@ -2,6 +2,11 @@ let search = document.getElementsByClassName('search')[0]
 let mails = document.getElementsByClassName('mails')[0]
 string = ''
 let work = false
+let scrl = true
+let allfunctions = ''
+mails.style.overflow = 'auto'
+mails.style.justifyContent = 'flex-start'
+setTimeout(function(){mails.scrollTop = mails.scrollHeight}, 100)
 if (localStorage.getItem('string')!=null){
 string = localStorage.getItem('string')}
 if (string == ''){
@@ -14,6 +19,9 @@ async function clip(t) {
   }
 mails.innerHTML = string
 document.onkeyup = function(event){
+    if(event.keyCode == 219 & search == document.activeElement & search.value.split('')[search.value.split('').length-1]!='х' & search.value.split('')[search.value.split('').length-1]!=']' & search.value.split('')[search.value.split('').length-1]!='{' & search.value.split('')[search.value.split('').length-1]!='Х'){
+        search.value +=']'
+    }
     if (event.keyCode == 13 & search == document.activeElement & search.value!=''){
         let text = search.value
         string+=`<div class="right">
@@ -30,7 +38,7 @@ document.onkeyup = function(event){
 }
 function webbby(){
     setInterval(function(){
-        let r = random(1,3)
+        let r = random(1,4)
         if(r==1){
             web('Ты уже долго работаешь, пора бы отдохнуть)')
         }
@@ -44,7 +52,7 @@ function webbby(){
     }, 3600000)
     setTimeout(function(){
         element(`<img src='https://cdn.dribbble.com/users/1686091/screenshots/7917582/media/d473833cef4b543a6111ebf651408582.gif' class = 'no-focus'>`)
-    }, 3000)
+    }, 1000)
 }
 function wait(t,n = 1){
     setTimeout(function(){
@@ -110,6 +118,38 @@ function sms(text){
         await navigator.clipboard.writeText(t)})()
         web(t = 'Copied')
 }
+if(text.split(' - ') != text){
+    let tex = text.split(' - ')[1]
+    let ss = text.split(' - ')[0].toLowerCase()
+    let sr = ''
+    ss.split('').forEach(function(item, index, array){
+        if(item != ' '){
+            sr+=item
+        }
+    })
+    let s = `if(text == '${sr}'){web('${tex}')}`
+    if (tex.split('')[0] == '['){
+        tex = tex.split('[')[1].split(']')[0].split('.')
+        let te = ''
+        tex.forEach(function(item, index, array){
+            te+=`if(n == ${index}){web('${item}')}\n`
+        })
+        let ss = text.split(' - ')[0].toLowerCase()
+        let sr = ''
+        ss.split('').forEach(function(item, index, array){
+            if(item != ' '){
+                sr+=item
+            }
+        })
+        s = `if(text == '${sr}'){
+            let n = random(0, ${tex.length})\n
+            ${te}
+        }`
+    }
+    allfunctions+=`${s}\n`
+    clip(s)
+    web('Copied')
+}
 
 
     // Без символов
@@ -132,7 +172,7 @@ function sms(text){
     if(text == 'clear' || text == 'clr'){
         web(t = 'Секунду...')
         setTimeout(function(){
-            localStorage.clear()
+            localStorage.setItem('string', '')
             string = ''
             mails.innerHTML = ''
         }, 1000)
@@ -163,6 +203,7 @@ function sms(text){
     }
     if(text == 'thx'){
         element(t = `<img src='https://kartinkin.net/uploads/posts/2021-07/1625751450_9-kartinkin-com-p-falshivaya-ulibka-art-art-krasivo-9.jpg' class = 'left'>`)
+        wait('Тебе спасибо', 1)
     }
     if(text.split('')[0] == 't' & text.split('')[1] == 'o'){
         let m = 1000
@@ -185,7 +226,7 @@ function sms(text){
     if (text == 'webbby' & work == false){
         work = true
         webbby()
-        let r = random(1,3)
+        let r = random(1,4)
         if(r == 3){
             web('Привет! Чем займемся сегодня?')
         }
@@ -196,19 +237,47 @@ function sms(text){
             web('И снова в работу!)')
         }
     }
-
-/*
-
-    if(text == 'relax'){
-        wait('Как скажешь', 1)
-        wait('Выбери что-нибудь', 2)
-        setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
-        setTimeout(function(){element(`<video src="https://disk.yandex.ru/i/gYEpOVFK0NhEBg" controls></video>`)}, 3000)
-        //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
-        //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
-        //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
+    if(text == 'scroll' || text == 'scrl'){
+        if(scrl == true){
+            scrl = false
+            mails.style.overflow = 'clip'
+            mails.style.justifyContent = 'flex-end'
+            web('Скролл остановлен')
+        }
+        else if(scrl == false){
+            mails.style.overflow = 'auto'
+            mails.style.justifyContent = 'flex-start'
+            mails.scrollTop = mails.scrollHeight
+            scrl = true
+            web('Скролл возобновлен')
+        }
     }
-*/
+    if(text == 'all'){
+        web('Функции скопированы')
+        clip(allfunctions)
+    }
+    if(text == 'милашка' | text == 'cute'){element(`<img src = 'https://i.yapx.cc/RK5HH.gif' class = 'no-focus' style = 'margin-bottom: 20px'>`)
+    wait('Ты чего...')
+}   
+    if(text == 'relax'){ 
+    wait('Как скажешь', 1) 
+    wait('Выбери что-нибудь', 2) 
+    setTimeout(function(){element(`<a href="https://cdn.semyana.website/17/10/25/248428.mp4" target="_ blank" >Сестра брату</a>`)}, 3000)
+    setTimeout(function(){element(`<a href="https://embeds.ah-me.com/embed/911355" target="_ blank" >Доча с папой</a>`)}, 3000) 
+    //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000) 
+    //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000) 
+    //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000) 
+} 
+
+
+
+//
+
+
+//
+
+
+
 }, 0)
     mails.scrollTop = mails.scrollHeight
 }
