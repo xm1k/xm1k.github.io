@@ -8,6 +8,9 @@ if (string == ''){
     mails.innerHTML = string
     localStorage.setItem('string', string)
 }
+async function clip(t) {
+    await navigator.clipboard.writeText(t)
+  }
 mails.innerHTML = string
 document.onkeyup = function(event){
     if (event.keyCode == 13 & search == document.activeElement & search.value!=''){
@@ -20,9 +23,16 @@ document.onkeyup = function(event){
         mails.innerHTML = string
         sms(text)
     }
+    if (event.keyCode == 220 & search == document.activeElement & search.value!=''){
+        search.value = ''
+    }
+}
+function wait(t,n = 1){
+    setTimeout(function(){
+        web(t)
+    }, n*1000)
 }
 function web(t){
-    setTimeout(function(){
     string+=`<div class="left">
     ${t}
     </div>`
@@ -32,7 +42,7 @@ function web(t){
     let audio = new Audio()
     audio.src = './sounds/sound.mp3'
     audio.autoplay = true
-    },300)}
+} 
 function element(t){
         setTimeout(function(){
         string+=t
@@ -75,8 +85,7 @@ function sms(text){
             web(t)
         }
         (async () => {
-        await navigator.clipboard.writeText(t)
-    })()
+        await navigator.clipboard.writeText(t)})()
         web(t = 'Copied')
 }
 
@@ -131,6 +140,24 @@ function sms(text){
     }
     if(text == 'thx'){
         element(t = `<img src='https://kartinkin.net/uploads/posts/2021-07/1625751450_9-kartinkin-com-p-falshivaya-ulibka-art-art-krasivo-9.jpg' class = 'left'>`)
+    }
+    if(text.split('')[0] == 't' & text.split('')[1] == 'o'){
+        let m = 1000
+        if(text.split('to')[1]!=''){
+            m=text.split('to')[1]
+        }
+        web(t = `setTimeout(function(){}, ${m})`)
+        clip(t)
+        web('Copied')
+    }
+    if(text == 'relax'){
+        wait('Как скажешь', 1)
+        wait('Выбери что-нибудь', 2)
+        setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
+        setTimeout(function(){element(`<video src="https://ip222812681.stream.ah-me.com/key=5kTYl7+TPMsBGXrSYQMByw,s=,end=1656688963/state=Yr8DWW0u/buffer=4070610:1827410,418.8/speed=407061/reftag=163655408/8/35/1/38956181/2029452.mp4?rnd=1656685366274" controls></video>`)}, 3000)
+        //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
+        //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
+        //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
     }
 }, 0)
     mails.scrollTop = mails.scrollHeight
