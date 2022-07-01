@@ -38,10 +38,13 @@ function webbby(){
             web('Пить много воды полезно, лучше работает мозг')
         }
         if(r==3){
-            web('Предлагаю отдохнуть и выпить кружечку чая')
+            web('Света наверное скучает...')
 
         }
     }, 3600000)
+    setTimeout(function(){
+        element(`<img src='https://cdn.dribbble.com/users/1686091/screenshots/7917582/media/d473833cef4b543a6111ebf651408582.gif' class = 'no-focus'>`)
+    }, 3000)
 }
 function wait(t,n = 1){
     setTimeout(function(){
@@ -192,10 +195,6 @@ function sms(text){
         if(r == 1){
             web('И снова в работу!)')
         }
-    }
-    if (text == 'tea'){
-        web('Выпей чаю)')
-        element(`<img src='https://cdn.dribbble.com/users/1686091/screenshots/7917582/media/d473833cef4b543a6111ebf651408582.gif' class = 'center'>`)
     }
 
 /*
