@@ -259,16 +259,6 @@ if(text.split(' - ') != text){
     if(text == 'милашка' | text == 'cute'){element(`<img src = 'https://i.yapx.cc/RK5HH.gif' class = 'no-focus' style = 'margin-bottom: 20px'>`)
     wait('Ты чего...')
 }   
-    if(text == 'relax'){ 
-    wait('Как скажешь', 1) 
-    wait('Выбери что-нибудь', 2) 
-    setTimeout(function(){element(`<a href="https://cdn.semyana.website/17/10/25/248428.mp4" target="_ blank" >Сестра брату</a>`)}, 3000)
-    setTimeout(function(){element(`<a href="https://embeds.ah-me.com/embed/911355" target="_ blank" >Доча с папой</a>`)}, 3000) 
-    //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000) 
-    //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000) 
-    //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000) 
-} 
-
 
 
 //
