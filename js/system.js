@@ -154,7 +154,7 @@ function sms(text){
         wait('Как скажешь', 1)
         wait('Выбери что-нибудь', 2)
         setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
-        setTimeout(function(){element(`<video src="https://ip222812681.stream.ah-me.com/key=5kTYl7+TPMsBGXrSYQMByw,s=,end=1656688963/state=Yr8DWW0u/buffer=4070610:1827410,418.8/speed=407061/reftag=163655408/8/35/1/38956181/2029452.mp4?rnd=1656685366274" controls></video>`)}, 3000)
+        setTimeout(function(){element(`<video src="https://disk.yandex.ru/i/gYEpOVFK0NhEBg" controls></video>`)}, 3000)
         //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
         //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
         //setTimeout(function(){element(`<video src="https://cdn.semyana.website/17/10/25/248428.mp4" controls></video> `)}, 3000)
