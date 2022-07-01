@@ -2,10 +2,18 @@ let search = document.getElementsByClassName('search')[0]
 let mails = document.getElementsByClassName('mails')[0]
 string = ''
 let work = false
-let scrl = true
+let time = document.getElementById('time')
+let mainBlock = document.getElementsByClassName('main-block')[0]
+if(localStorage.getItem('scroll') == undefined){
+    localStorage.setItem('scroll', true)
+}
+let now = new Date()
+time.innerHTML = `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`
+setInterval(function(){
+    now = new Date()
+    time.innerHTML = `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`
+}, 1000)
 let allfunctions = ''
-mails.style.overflow = 'auto'
-mails.style.justifyContent = 'flex-start'
 setTimeout(function(){mails.scrollTop = mails.scrollHeight}, 100)
 if (localStorage.getItem('string')!=null){
 string = localStorage.getItem('string')}
@@ -19,10 +27,17 @@ async function clip(t) {
   }
 mails.innerHTML = string
 document.onkeyup = function(event){
+    if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
+        search.value = ''
+    }
     if(event.keyCode == 219 & search == document.activeElement & search.value.split('')[search.value.split('').length-1]!='х' & search.value.split('')[search.value.split('').length-1]!=']' & search.value.split('')[search.value.split('').length-1]!='{' & search.value.split('')[search.value.split('').length-1]!='Х'){
         search.value +=']'
     }
-    if (event.keyCode == 13 & search == document.activeElement & search.value!=''){
+    if(event.keyCode == 13 & (search.value.toLowerCase() == 'пошел нахуй' || search.value.toLowerCase() == 'иди нахуй' || search.value.toLowerCase() == 'иди нахуй!' || search.value.toLowerCase() == 'пошла нахуй!' || search.value.toLowerCase() == 'пошел нахуй!' || search.value.toLowerCase() == 'пошла нахуй')){
+        user('Я гей')
+        search.value = ''
+    }
+    if (event.keyCode == 13 & search == document.activeElement & search.value!='' & (search.value.toLowerCase() != 'пошел нахуй' & search.value.toLowerCase() != 'иди нахуй' & search.value.toLowerCase() != 'иди на хуй' & search.value.toLowerCase() != 'пошла нахуй' & search.value.toLowerCase() != 'пошла нахуй!' & search.value.toLowerCase() != 'иди нахуй!'& search.value.toLowerCase() != 'пошел нахуй!')){
         let text = search.value
         string+=`<div class="right">
        ${search.value}
@@ -49,10 +64,7 @@ function webbby(){
             web('Света наверное скучает...')
 
         }
-    }, 3600000)
-    setTimeout(function(){
-        element(`<img src='https://cdn.dribbble.com/users/1686091/screenshots/7917582/media/d473833cef4b543a6111ebf651408582.gif' class = 'no-focus'>`)
-    }, 1000)
+    }, 1800000)
 }
 function wait(t,n = 1){
     setTimeout(function(){
@@ -92,6 +104,32 @@ function user(t){
     mails.innerHTML = string
     mails.scrollTop = mails.scrollHeight
     }, 300)}
+function scr(){
+        scrl = localStorage.getItem('scroll')
+        if(scrl == 'true'){
+            localStorage.setItem('scroll', 'false')
+            mails.style.overflow = 'clip'
+            mails.style.justifyContent = 'flex-end'
+            web('Скролл остановлен')
+        }
+        else if(scrl == 'false'){
+            mails.style.overflow = 'auto'
+            mails.style.justifyContent = 'flex-start'
+            mails.scrollTop = mails.scrollHeight
+            localStorage.setItem('scroll', 'true')
+            web('Скролл возобновлен')
+        }
+    }
+    scrl = localStorage.getItem('scroll')
+    if(scrl == 'false'){
+        mails.style.overflow = 'clip'
+        mails.style.justifyContent = 'flex-end'
+    }
+    else if(scrl == 'true'){
+        mails.style.overflow = 'auto'
+        mails.style.justifyContent = 'flex-start'
+        mails.scrollTop = mails.scrollHeight
+    }
 function sms(text){
     
     if (text.split('')[0] == 'f' & text.split('')[1] == '/'){
@@ -149,6 +187,14 @@ if(text.split(' - ') != text){
     allfunctions+=`${s}\n`
     clip(s)
     web('Copied')
+}
+
+if(text.split('_')[0] == 'background'){
+    mainBlock.style.background = `url(${text.split('_')[1]})`
+    mainBlock.style.backgroundSize = `100% 100%`
+    mainBlock.style.backgroundRepeat = `no-repeat`
+    if(text.split('_')[1]!='' & text.split('').includes('_') == true){
+    web('Желательно использовать светлый фон')}
 }
 
 
@@ -238,29 +284,109 @@ if(text.split(' - ') != text){
         }
     }
     if(text == 'scroll' || text == 'scrl'){
-        if(scrl == true){
-            scrl = false
-            mails.style.overflow = 'clip'
-            mails.style.justifyContent = 'flex-end'
-            web('Скролл остановлен')
-        }
-        else if(scrl == false){
-            mails.style.overflow = 'auto'
-            mails.style.justifyContent = 'flex-start'
-            mails.scrollTop = mails.scrollHeight
-            scrl = true
-            web('Скролл возобновлен')
-        }
+        scr()
     }
     if(text == 'all'){
         web('Функции скопированы')
         clip(allfunctions)
     }
+    if(text == 'nofocus')
+    {web(`.nofocus{<br>
+        -moz-user-select: -moz-none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;<br>}`)
+    clip(`.nofocus{
+        -moz-user-select: -moz-none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }`)
+    web(`Copied`)}
+    if(text == 'scrolling'){
+        web(`body::-webkit-scrollbar {
+            width: 12px;
+          }
+          body::-webkit-scrollbar-track {
+            background: orange;
+          }
+          body::-webkit-scrollbar-thumb {
+            background-color: blue;
+            border-radius: 20px;
+            border: 3px solid orange;
+          }`)
+        clip(`body::-webkit-scrollbar {
+            width: 12px;
+          }
+          body::-webkit-scrollbar-track {
+            background: orange;
+          }
+          body::-webkit-scrollbar-thumb {
+            background-color: blue;
+            border-radius: 20px;
+            border: 3px solid orange;
+          }`)
+        web('Copied')
+    }
+    if (text == 'background'){
+        web('Чтобы сменить задний фон, используйте команду: background[ссылка на фон]')
+    }
     if(text == 'милашка' | text == 'cute'){element(`<img src = 'https://i.yapx.cc/RK5HH.gif' class = 'no-focus' style = 'margin-bottom: 20px'>`)
     wait('Ты чего...')
 }   
 
+if(text == 'reload'){web('run')}
+if(text == 'какты'){
+            let n = random(0, 4)
 
+            if(n == 0){web('Все хорошо)')}
+if(n == 1){web('У меня все отлично')}
+if(n == 2){web('Да прекраааасно')}
+if(n == 3){web('Не волнуйся за меня')}
+
+        }
+if(text == 'какдела'){
+            let n = random(0, 4)
+
+            if(n == 0){web('Все хорошо)')}
+if(n == 1){web('У меня все отлично')}
+if(n == 2){web('Да прекраааасно')}
+if(n == 3){web('Не волнуйся за меня')}
+
+        }
+if(text == 'кактвоидела'){
+            let n = random(0, 4)
+
+            if(n == 0){web('Все хорошо)')}
+if(n == 1){web('У меня все отлично')}
+if(n == 2){web('Да прекраааасно')}
+if(n == 3){web('Не волнуйся за меня')}
+
+        }
+        if(text == 'sure'){web('хехе)')}
+        if(text == 'яустал'){
+                    let n = random(0, 3)
+        
+                    if(n == 0){web('Так отдохни!!')}
+        if(n == 1){web('А ну, живо отдыхать')}
+        if(n == 2){web('Не перенапрягайся')}
+        
+                }
+                if(text == 'hello'){
+                    let n = random(0, 3)
+        
+                    if(n == 0){web('Привет, разработчик!')}
+        if(n == 1){web('И тебе привет')}
+        if(n == 2){web('Привет)')}
+        
+                }
+                if(text == 'оки'){web(')')}
+                if(text == 'хехе'){web('=)')}
+                if(text == 'поздноуже'){web('О да...')}
+                if(text == 'ужепоздно'){web('я тоже так думаю(')}
+                
 //
 
 
