@@ -74,11 +74,6 @@ body
 		max-width: 70%
 		overflow: wrap
 		word-wrap: break-word
-		-moz-user-select: -moz-none
-		-o-user-select: none
-		-khtml-user-select: none
-		-webkit-user-select: none
-		user-select: none
 		&_img
 			min-width: 50%
 			min-height: auto
@@ -93,11 +88,6 @@ body
 		max-width: 70%
 		overflow: wrap
 		word-wrap: break-word
-		-moz-user-select: -moz-none
-		-o-user-select: none
-		-khtml-user-select: none
-		-webkit-user-select: none
-		user-select: none
 		&_img
 			min-width: 50%
 			min-height: auto
@@ -144,7 +134,7 @@ a
 	font-family: 'Dancing Script'
 	width: 18%
 	padding-top: 1%
-	padding-left: 3.9%
+	padding-left: 2%
 	height: 10%
 	border-radius: 15px
 	border: rgba(black, 0.2) solid
@@ -154,6 +144,10 @@ a
 	-khtml-user-select: none
 	-webkit-user-select: none
 	user-select: none
+	transition-duration: 0.3s
+	&:hover
+		transition-duration: 0.3s
+		top: 22%
 .java
 	position: fixed
 	left: -3%
