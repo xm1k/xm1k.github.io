@@ -94,7 +94,7 @@ function element(t){
         let audio = new Audio()
         audio.src = './sounds/sound.mp3'
         audio.autoplay = true
-    },300)}
+    },0)}
 function random(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -203,9 +203,239 @@ if(text.split('_')[0] == 'background'){
 if(text == ')'){web('<3')}
 
 
+if(text == 'color'){
+    let colors = `<div class = 'palitra'>
+    <div class = 'color ee0a0a'></div>
+    <div class = 'color e63c3c'></div>
+    <div class = 'color e36d6d'></div>
+    <div class = 'color e0a5a5'></div>
+
+    <div class = 'color e68700'></div>
+    <div class = 'color e89e35'></div>
+    <div class = 'color e8bb7c'></div>
+    <div class = 'color e8d2b1'></div>
+
+    <div class = 'color ebe80a'></div>
+    <div class = 'color e7e567'></div>
+    <div class = 'color eae992'></div>
+    <div class = 'color ececc2'></div>
+
+    <div class = 'color z2fba14'></div>
+    <div class = 'color z3bee17'></div>
+    <div class = 'color z78d666'></div>
+    <div class = 'color b5f0a9'></div>
+
+    <div class = 'color z148780'></div>
+    <div class = 'color z1ce1d5'></div>
+    <div class = 'color z90ebe6'></div>
+    <div class = 'color baeae7'></div>
+
+    <div class = 'color z2e44ed'></div>
+    <div class = 'color z6374ed'></div>
+    <div class = 'color z919cef'></div>
+    <div class = 'color c3c8f2'></div>
+
+    <div class = 'color ec1fee'></div>
+    <div class = 'color ea5cec'></div>
+    <div class = 'color ee98ef'></div>
+    <div class = 'color e7c1e7'></div>
+
+    <div class = 'color z000000'></div>
+    <div class = 'color z4f4f4f'></div>
+    <div class = 'color cecece'></div>
+    <div class = 'color ffffff'></div>
+    </div>`
+    mails.innerHTML=string+colors
+    let audio = new Audio()
+    audio.src = './sounds/sound.mp3'
+    audio.autoplay = true
+    setTimeout(function(){
+        document.getElementsByClassName('ee0a0a')[0].onclick=function(){
+            web('#ee0a0a')
+            web('Copied')
+            clip(`rgba(238,10,10,1)`)
+        }
+        document.getElementsByClassName('e63c3c')[0].onclick=function(){
+            web('#e63c3c')
+            web('Copied')
+            clip(`rgba(230,60,60,1)`)
+        }
+        document.getElementsByClassName('e36d6d')[0].onclick=function(){
+            web('#e36d6d')
+            web('Copied')
+            clip(`rgba(227,109,109,1)`)
+        }
+        document.getElementsByClassName('e0a5a5')[0].onclick=function(){
+            web('#e0a5a5')
+            web('Copied')
+            clip(`rgba(224,165,165,1)`)
+        }
+
+        //
+
+        document.getElementsByClassName('e68700')[0].onclick=function(){
+            web('#e68700')
+            web('Copied')
+            clip(`rgba(230,135,0,1)`)
+        }
+        document.getElementsByClassName('e89e35')[0].onclick=function(){
+            web('#e89e35')
+            web('Copied')
+            clip(`rgba(232,158,53,1)`)
+        }
+        document.getElementsByClassName('e8bb7c')[0].onclick=function(){
+            web('#e8bb7c')
+            web('Copied')
+            clip(`rgba(232,187,124,1)`)
+        }
+        document.getElementsByClassName('e8d2b1')[0].onclick=function(){
+            web('#e8d2b1')
+            web('Copied')
+            clip(`rgba(232,210,177,1)`)
+        }
+
+        //
+        
+        document.getElementsByClassName('ebe80a')[0].onclick=function(){
+            web('#ebe80a')
+            web('Copied')
+            clip(`rgba(235,232,10,1)`)
+        }
+        document.getElementsByClassName('e7e567')[0].onclick=function(){
+            web('#e7e567')
+            web('Copied')
+            clip(`rgba(231,229,103,1)`)
+        }
+        document.getElementsByClassName('eae992')[0].onclick=function(){
+            web('#eae992')
+            web('Copied')
+            clip(`rgba(234,233,146,1)`)
+        }
+        document.getElementsByClassName('ececc2')[0].onclick=function(){
+            web('#ececc2')
+            web('Copied')
+            clip(`rgba(236,236,194,1)`)
+        }
+
+        //
+
+        document.getElementsByClassName('z2fba14')[0].onclick=function(){
+            web('#2fba14')
+            web('Copied')
+            clip(`rgba(47,186,20,1)`)
+        }
+        document.getElementsByClassName('z3bee17')[0].onclick=function(){
+            web('#3bee17')
+            web('Copied')
+            clip(`rgba(59,238,23,1)`)
+        }
+        document.getElementsByClassName('z78d666')[0].onclick=function(){
+            web('#78d666')
+            web('Copied')
+            clip(`rgba(120,214,102,1)`)
+        }
+        document.getElementsByClassName('b5f0a9')[0].onclick=function(){
+            web('#b5f0a9')
+            web('Copied')
+            clip(`rgba(181,240,169,1)`)
+        }
+
+        //
+
+        document.getElementsByClassName('z148780')[0].onclick=function(){
+            web('#148780')
+            web('Copied')
+            clip(`rgba(20,135,128,1)`)
+        }
+        document.getElementsByClassName('z1ce1d5')[0].onclick=function(){
+            web('#1ce1d5')
+            web('Copied')
+            clip(`rgba(28,225,213,1)`)
+        }
+        document.getElementsByClassName('z90ebe6')[0].onclick=function(){
+            web('#90ebe6')
+            web('Copied')
+            clip(`rgba(144,235,230,1)`)
+        }
+        document.getElementsByClassName('baeae7')[0].onclick=function(){
+            web('#baeae7')
+            web('Copied')
+            clip(`rgba(186,234,231,1)`)
+        }
+
+        //
+
+        document.getElementsByClassName('z2e44ed')[0].onclick=function(){
+            web('#2e44ed')
+            web('Copied')
+            clip(`rgba(46,68,237,1)`)
+        }
+        document.getElementsByClassName('z6374ed')[0].onclick=function(){
+            web('#6374ed')
+            web('Copied')
+            clip(`rgba(99,116,237,1)`)
+        }
+        document.getElementsByClassName('z919cef')[0].onclick=function(){
+            web('#919cef')
+            web('Copied')
+            clip(`rgba(145,156,239,1)`)
+        }
+        document.getElementsByClassName('c3c8f2')[0].onclick=function(){
+            web('#c3c8f2')
+            web('Copied')
+            clip(`rgba(195,200,242,1)`)
+        }
+
+        //
+
+        document.getElementsByClassName('ec1fee')[0].onclick=function(){
+            web('#ec1fee')
+            web('Copied')
+            clip(`rgba(236,31,238,1)`)
+        }
+        document.getElementsByClassName('ea5cec')[0].onclick=function(){
+            web('#ea5cec')
+            web('Copied')
+            clip(`rgba(234,92,236,1)`)
+        }
+        document.getElementsByClassName('ee98ef')[0].onclick=function(){
+            web('#ee98ef')
+            web('Copied')
+            clip(`rgba(238,152,239,1)`)
+        }
+        document.getElementsByClassName('e7c1e7')[0].onclick=function(){
+            web('#e7c1e7')
+            web('Copied')
+            clip(`rgba(231,193,231,1)`)
+        }
+
+        //
+
+        document.getElementsByClassName('z000000')[0].onclick=function(){
+            web('#000000')
+            web('Copied')
+            clip(`rgba(0,0,0,1)`)
+        }
+        document.getElementsByClassName('z4f4f4f')[0].onclick=function(){
+            web('#4f4f4f')
+            web('Copied')
+            clip(`rgba(79,79,79,1)`)
+        }
+        document.getElementsByClassName('cecece')[0].onclick=function(){
+            web('#cecece')
+            web('Copied')
+            clip(`rgba(206,206,206,1)`)
+        }
+        document.getElementsByClassName('ffffff')[0].onclick=function(){
+            web('#ffffff')
+            web('Copied')
+            clip(`rgba(250,250,250,1)`)
+        }
+        
+    }, 100)
+}
+
     // Без символов
-
-
 
     list = text.toLowerCase().split('')
     let str = ''
@@ -377,6 +607,9 @@ if(n == 3){web('Не волнуйся за меня')}
             setTimeout(function(){web('А то)')}, 1000)
         }
         if(text == 'sure'){web('хехе)')}
+        if(text == 'x'){
+            window.open(['https://xm1k.github.io'])
+        }
         if(text == 'яустал'){
                     let n = random(0, 3)
         
@@ -447,6 +680,44 @@ if(n == 3){web('Не волнуйся за меня')}
 if(text == 'ничего'){web('((')}
 if(text == 'tea'){web('Чай это язык на котором я написана')}
 if(text == 'але'){web('да?')}
+if(text == 'swag'){web('Да ты крут)')}
+if(text == 'lu'){
+            let n = random(0, 2)
+
+            if(n == 0){web('И я!')}
+if(n == 1){web('И я тебя)')}
+
+        }
+if(text == 'ilu'){
+            let n = random(0, 2)
+
+            if(n == 0){web('И я!')}
+if(n == 1){web('И я тебя)')}
+
+        }
+if(text == 'iloveyou'){
+            let n = random(0, 2)
+
+            if(n == 0){web('И я!')}
+if(n == 1){web('И я тебя)')}
+
+        }
+if(text == 'люблютебя'){
+            let n = random(0, 2)
+
+            if(n == 0){web('И я!')}
+if(n == 1){web('И я тебя)')}
+
+        }
+if(text == 'ялюблютебя'){
+            let n = random(0, 2)
+
+            if(n == 0){web('И я!')}
+if(n == 1){web('И я тебя)')}
+
+        }
+if(text == 'bye'){web('Еще увидимся)')}
+
 
                  
                 if(text == 'relax'){  
@@ -456,7 +727,67 @@ if(text == 'але'){web('да?')}
                     setTimeout(function(){element(`<a href="https://embeds.ah-me.com/embed/911355" target="_ blank" >Доча с папой</a>`)}, 3000)
                     setTimeout(function(){element(`<a href="https://yastatic.net/video-player/0x34e08fd964a/pages-common/iframe-default/iframe-default.html#html=%3Ciframe%20src%3D%22https%3A%2F%2Fnmcorp.video%2Fplayer%2F-159745528_456239903%3Fm%3Db46833af5fef99c4052d3625a98c0ff0%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20allowfullscreen%3D%221%22%20allow%3D%22autoplay%3B%20fullscreen%3B%20accelerometer%3B%20gyroscope%3B%20picture-in-picture%22%20aria-label%3D%22Video%22%3E%3C%2Fiframe%3E&hidden=externalPlayback&counters=%7B%22reqid%22%3A%221656753119971787-14334831740810629738-vla1-5786-vla-l7-balancer-8080-BAL-3202%22%2C%22duration%22%3A2808%2C%22live%22%3Afalse%2C%22videoUrl%22%3A%22http%3A%2F%2Fnoodlemagazine.com%2Fwatch%2F-159745528_456239903%22%2C%22heartbeats%22%3A%7B%22singlePath%22%3A%22heartbeat.single.fserp%22%2C%22noRepeat%22%3Atrue%7D%2C%22table%22%3A%22video_tech%22%7D" target="_ blank" >Теща</a>`)}, 3000) 
                     setTimeout(function(){element(`<a href="https://yastatic.net/video-player/0x34e08fd964a/pages-common/iframe-default/iframe-default.html#html=%3Ciframe%20src%3D%22%2F%2Fwww.ebalka.video%2Fembed%2F86875%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20allowfullscreen%3D%221%22%20allow%3D%22autoplay%3B%20fullscreen%3B%20accelerometer%3B%20gyroscope%3B%20picture-in-picture%22%20aria-label%3D%22Video%22%3E%3C%2Fiframe%3E&hidden=externalPlayback&counters=%7B%22reqid%22%3A%221656753320483676-9071948606988612783-vla1-5786-vla-l7-balancer-8080-BAL-736%22%2C%22duration%22%3A672%2C%22live%22%3Afalse%2C%22videoUrl%22%3A%22http%3A%2F%2Febalko.net%2Fvideos%2F86875%2Fsestra-podlechila-brata-rotikom-i-kiskoy%2F%22%2C%22heartbeats%22%3A%7B%22singlePath%22%3A%22heartbeat.single.fserp%22%2C%22noRepeat%22%3Atrue%7D%2C%22table%22%3A%22video_tech%22%7D" target="_ blank" >Сестра (new)</a>`)}, 3000)    
-                }            
+                }
+                if(text == 'hey'){web('?')}
+                if(text == 'яздесь'){web('Я скучала)')}
+                if(text == 'готово'){web('Ура!)')}
+                if(text == 'sps'){web(';)')}
+                if(text == 'howareyou'){web(`I'm fine)`)}
+                if(text == 'hi'){web('Приветик)')}
+                if(text == 'пипец'){web('Именно')}
+                if(text == 'ого'){web('А то)')}
+                if(text == 'обиднно'){
+                            let n = random(0, 3)
+                
+                            if(n == 0){web('За что?')}
+                if(n == 1){web('Ну вот так(')}
+                if(n == 2){web('Ничего, пройдет')}
+                
+                        }
+                if(text == 'обидно'){
+                            let n = random(0, 3)
+                
+                            if(n == 0){web('За что?')}
+                if(n == 1){web('Ну вот так(')}
+                if(n == 2){web('Ничего, пройдет')}
+                
+                        }
+                if(text == 'мило'){
+                            let n = random(0, 2)
+                
+                            if(n == 0){web('Спасибо)')}
+                if(n == 1){web('Я такая')}
+                
+                        }
+                if(text == 'аллергия'){
+                            let n = random(0, 3)
+                
+                            if(n == 0){web('О нет!')}
+                if(n == 1){web('Ну вот(')}
+                if(n == 2){web('Жалко тебя')}
+                
+                        }
+                        if(text == 'yeah'){web('sure')}
+                        if(text == 'досвидания'){
+                                    let n = random(0, 1)
+                        
+                                    if(n == 0){web('Ариведерчи')}
+                        
+                                }
+                        if(text == 'давайдосвидания'){
+                                    let n = random(0, 1)
+                        
+                                    if(n == 0){web('>:(')}
+                        
+                                }
+                        if(text == 'расскажисказку'){web('Как дед сменил окраску')}
+                        if(text == 'давай'){web('Я не против')}
+                        if(text == 'ок'){web('чпОК')}
+                        if(text == 'какдень'){web('Ответить лень')}
+
+                
+
+                            
 //
 
 

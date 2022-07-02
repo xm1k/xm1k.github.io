@@ -38,14 +38,6 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
-.mails::-webkit-scrollbar {
-  width: 12px;               /* ширина scrollbar */
-}
-.mails::-webkit-scrollbar-track {
-  background: orange;        /* цвет дорожки */
-}
-.mails::-webkit-scrollbar-thumb {
-  background-color: blue;    /* цвет плашки */
-  border-radius: 20px;       /* закругления плашки */
-  border: 3px solid orange;  /* padding вокруг плашки */
+body{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
