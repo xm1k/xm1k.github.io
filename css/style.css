@@ -158,6 +158,10 @@ body {
   border: rgba(0, 0, 0, 0.2) 3px solid;
 }
 
+img {
+  margin-bottom: 10px;
+}
+
 video {
   margin: 20px;
   border-radius: 20px;
@@ -169,7 +173,7 @@ a {
   font-size: 200%;
   font-weight: bold;
   width: 50%;
-  height: 8%;
+  min-height: 7%;
   border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -187,6 +191,7 @@ a {
   margin-bottom: 20px;
 }
 a:hover {
+  background-color: whitesmoke;
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
   width: 45%;
@@ -233,6 +238,16 @@ a:hover {
   margin-left: 35%;
   margin-top: -12%;
   font-size: 300%;
+}
+
+.gif {
+  height: 400px;
+  width: 80%;
+  margin: 0 auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
 }
 
 @media screen and (max-width: 700px) {

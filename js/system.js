@@ -13,7 +13,10 @@ setInterval(function(){
     now = new Date()
     time.innerHTML = `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`
 }, 1000)
-let allfunctions = ''
+if(localStorage.getItem('allf') == undefined){
+    localStorage.setItem('allf', '')
+}
+let allfunctions = localStorage.getItem('allf')
 setTimeout(function(){mails.scrollTop = mails.scrollHeight}, 100)
 if (localStorage.getItem('string')!=null){
 string = localStorage.getItem('string')}
@@ -185,6 +188,7 @@ if(text.split(' - ') != text){
         }`
     }
     allfunctions+=`${s}\n`
+    localStorage.setItem('allf', allfunctions)
     clip(s)
     web('Copied')
 }
@@ -290,6 +294,8 @@ if(text == ')'){web('<3')}
     if(text == 'all'){
         web('Функции скопированы')
         clip(allfunctions)
+        allfunctions = ''
+        localStorage.setItem('allf', '')
     }
     if(text == 'nofocus')
     {web(`.nofocus{<br>
@@ -366,6 +372,10 @@ if(n == 2){web('Да прекраааасно')}
 if(n == 3){web('Не волнуйся за меня')}
 
         }
+        if (text == 'умная' | text == 'smart' | text == 'smrt' | text == 'гений'){
+            element(`<img src = 'img/idea.gif'>`)
+            setTimeout(function(){web('А то)')}, 1000)
+        }
         if(text == 'sure'){web('хехе)')}
         if(text == 'яустал'){
                     let n = random(0, 3)
@@ -428,6 +438,25 @@ if(n == 3){web('Не волнуйся за меня')}
                 if(text == 'моято'){web('хехее)')}
                 if(text == 'хочуесть'){web('Так сходиии')}
                 if(text == 'яхочуесть'){web('Так сходии, поешь')}
+                if(text == 'умница'){web('Я такааая)')}
+                if(text == 'спасибо'){web('обращайся))')}
+                if(text == 'ok'){web('sure)')}
+                if(text == 'letsgo'){web('За работу!')}
+                if(text == 'сука'){web('А ну не матерись!')}
+                if(text == 'nothing'){web('((')}
+if(text == 'ничего'){web('((')}
+if(text == 'tea'){web('Чай это язык на котором я написана')}
+if(text == 'але'){web('да?')}
+
+                 
+                if(text == 'relax'){  
+                    wait('Как скажешь', 1)  
+                    wait('Выбери что-нибудь', 2)  
+                    setTimeout(function(){element(`<a href="https://cdn.semyana.website/17/10/25/248428.mp4" target="_ blank" >Сестра брату</a>`)}, 3000) 
+                    setTimeout(function(){element(`<a href="https://embeds.ah-me.com/embed/911355" target="_ blank" >Доча с папой</a>`)}, 3000)
+                    setTimeout(function(){element(`<a href="https://yastatic.net/video-player/0x34e08fd964a/pages-common/iframe-default/iframe-default.html#html=%3Ciframe%20src%3D%22https%3A%2F%2Fnmcorp.video%2Fplayer%2F-159745528_456239903%3Fm%3Db46833af5fef99c4052d3625a98c0ff0%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20allowfullscreen%3D%221%22%20allow%3D%22autoplay%3B%20fullscreen%3B%20accelerometer%3B%20gyroscope%3B%20picture-in-picture%22%20aria-label%3D%22Video%22%3E%3C%2Fiframe%3E&hidden=externalPlayback&counters=%7B%22reqid%22%3A%221656753119971787-14334831740810629738-vla1-5786-vla-l7-balancer-8080-BAL-3202%22%2C%22duration%22%3A2808%2C%22live%22%3Afalse%2C%22videoUrl%22%3A%22http%3A%2F%2Fnoodlemagazine.com%2Fwatch%2F-159745528_456239903%22%2C%22heartbeats%22%3A%7B%22singlePath%22%3A%22heartbeat.single.fserp%22%2C%22noRepeat%22%3Atrue%7D%2C%22table%22%3A%22video_tech%22%7D" target="_ blank" >Теща</a>`)}, 3000) 
+                    setTimeout(function(){element(`<a href="https://yastatic.net/video-player/0x34e08fd964a/pages-common/iframe-default/iframe-default.html#html=%3Ciframe%20src%3D%22%2F%2Fwww.ebalka.video%2Fembed%2F86875%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20allowfullscreen%3D%221%22%20allow%3D%22autoplay%3B%20fullscreen%3B%20accelerometer%3B%20gyroscope%3B%20picture-in-picture%22%20aria-label%3D%22Video%22%3E%3C%2Fiframe%3E&hidden=externalPlayback&counters=%7B%22reqid%22%3A%221656753320483676-9071948606988612783-vla1-5786-vla-l7-balancer-8080-BAL-736%22%2C%22duration%22%3A672%2C%22live%22%3Afalse%2C%22videoUrl%22%3A%22http%3A%2F%2Febalko.net%2Fvideos%2F86875%2Fsestra-podlechila-brata-rotikom-i-kiskoy%2F%22%2C%22heartbeats%22%3A%7B%22singlePath%22%3A%22heartbeat.single.fserp%22%2C%22noRepeat%22%3Atrue%7D%2C%22table%22%3A%22video_tech%22%7D" target="_ blank" >Сестра (new)</a>`)}, 3000)    
+                }            
 //
 
 
