@@ -16,12 +16,20 @@ setInterval(function(){
 if(localStorage.getItem('allf') == undefined){
     localStorage.setItem('allf', '')
 }
+
+//
+
+if(localStorage.getItem('theme') == undefined){
+    localStorage.setItem('theme', 'true')
+}
+let theme = localStorage.getItem('theme')
+//
 let allfunctions = localStorage.getItem('allf')
 setTimeout(function(){mails.scrollTop = mails.scrollHeight}, 100)
 if (localStorage.getItem('string')!=null){
 string = localStorage.getItem('string')}
 if (string == ''){
-    string = `<div class = 'left'>Привет, я твоя верная помощница webbby)</div>`
+    string = `<div class = 'left'>Привет, я webbby, бот - помощник, если вы здесь по поводу портфолио, наберите 'Портфолио'</div>`
     mails.innerHTML = string
     localStorage.setItem('string', string)
 }
@@ -84,7 +92,55 @@ function web(t){
     let audio = new Audio()
     audio.src = './sounds/sound.mp3'
     audio.autoplay = true
-} 
+}
+function them(){
+    if(theme == 'true'){
+        document.getElementsByClassName('cap')[0].style.opacity = '0'
+        document.getElementsByClassName('cap')[1].style.opacity = '0'
+        document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
+        document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
+        document.getElementsByClassName('logo')[0].style.border =  '3px rgba(206,206,206,0.7) solid'
+        document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
+        document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
+        document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
+        localStorage.setItem('theme', 'false')
+        theme = 'false'
+        web('Пока, кружка(')
+    }
+    else if(theme == 'false'){
+        document.getElementsByClassName('cap')[0].style.opacity = '1'
+        document.getElementsByClassName('cap')[1].style.opacity = '1'
+        document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
+        document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
+        document.getElementsByClassName('logo')[0].style.border =  '3px rgba(0, 0, 0, 0.4) solid'
+        document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
+        document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
+        document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
+        localStorage.setItem('theme', 'true')
+        theme = 'true'
+        web('Привееет, кружка)')
+    }
+}
+if(theme == 'false'){
+    document.getElementsByClassName('cap')[0].style.opacity = '0'
+    document.getElementsByClassName('cap')[1].style.opacity = '0'
+    document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
+    document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
+    document.getElementsByClassName('logo')[0].style.border =  '3px rgba(206,206,206,0.7) solid'
+    document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
+    document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
+    document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
+}
+else if(theme == 'true'){
+    document.getElementsByClassName('cap')[0].style.opacity = '1'
+    document.getElementsByClassName('cap')[1].style.opacity = '1'
+    document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
+    document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
+    document.getElementsByClassName('logo')[0].style.border =  '3px rgba(0, 0, 0, 0.4) solid'
+    document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
+    document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
+    document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
+}
 function element(t){
         setTimeout(function(){
         string+=t
@@ -504,6 +560,10 @@ if(text == 'color'){
         clip(t)
         web('Copied')
     }
+    if(text == 'candy'){
+        wait('Открываю', 1)
+        setTimeout(function(){window.open('/htmls/Candy/index.html')}, 2000)
+    }
     if (text == 'webbby' & work == false){
         work = true
         webbby()
@@ -517,6 +577,9 @@ if(text == 'color'){
         if(r == 1){
             web('И снова в работу!)')
         }
+    }
+    if(text == 'портфолио'){
+        web('В разработке')
     }
     if(text == 'scroll' || text == 'scrl'){
         scr()
@@ -573,6 +636,10 @@ if(text == 'color'){
     if(text == 'милашка' | text == 'cute'){element(`<img src = 'https://i.yapx.cc/RK5HH.gif' class = 'no-focus' style = 'margin-bottom: 20px'>`)
     wait('Ты чего...')
 }   
+
+if(text == 'theme'){
+    them()
+}
 
 if(text == 'reload'){web('run')}
 if(text == 'какты'){
@@ -638,6 +705,9 @@ if(n == 3){web('Не волнуйся за меня')}
         if(n == 2){web('Доброй ночки)')}
         
                 }
+        if(text == 'hehe'){web('))')}
+        if(text == 'xexe'){web('))')}
+        if(text == 'goodnight'){web('Sweeety dreams)')}                
         if(text == 'спокойнойночи'){
                     let n = random(0, 3)
         
@@ -678,7 +748,6 @@ if(n == 3){web('Не волнуйся за меня')}
                 if(text == 'сука'){web('А ну не матерись!')}
                 if(text == 'nothing'){web('((')}
 if(text == 'ничего'){web('((')}
-if(text == 'tea'){web('Чай это язык на котором я написана')}
 if(text == 'але'){web('да?')}
 if(text == 'swag'){web('Да ты крут)')}
 if(text == 'lu'){
@@ -784,6 +853,14 @@ if(text == 'bye'){web('Еще увидимся)')}
                         if(text == 'давай'){web('Я не против')}
                         if(text == 'ок'){web('чпОК')}
                         if(text == 'какдень'){web('Ответить лень')}
+                        if(text == 'goodnight'){web('Sweeety dreams)')}
+                        if(text == 'даладно'){web('Правда, правда)')}
+                        if(text == 'ктоты'){web('Я же сказала, что меня зовут webbby, и я web помощник')}
+                        if(text == 'чтотыможешь'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
+                        if(text == 'чтотыумеешь'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
+                        if(text == 'help'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
+                        if(text == 'help!'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
+                        
 
                 
 
