@@ -579,7 +579,8 @@ if(text == 'color'){
         }
     }
     if(text == 'портфолио'){
-        web('В разработке')
+        web('Открываю...')
+        setTimeout(function(){window.open('/htmls/Portfolio/index.html')}, 1000)
     }
     if(text == 'scroll' || text == 'scrl'){
         scr()
