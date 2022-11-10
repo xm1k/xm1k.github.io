@@ -1,21 +1,19 @@
 body{
+}
+.none{
+    width: 350px;
+    margin-right: 50%;
+    margin-left: 50%;
+    height: 500px;
+}
+.block{
     display: flex;
-    height: 100%;
     width: 100%;
     justify-content: center;
     overflow-x: hidden;
     flex-direction: column;
     align-items: center;
+    padding-top: 10px;
 }
-.block{
-    width: 640px;
-    position: relative;
-    height: auto;
-}
-.border{
-    height: 78px;
-    width: 640px;
-    background-color: white;
-    position: absolute;
-    bottom: 0;
+.non{
 }
