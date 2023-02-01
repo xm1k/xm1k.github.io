@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = 0">
+	<title>Candy</title>
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="icon" href="img/fav-icon.webp">
+<body>
+	<div class="main-block">
+		<div class="nav">
+			<div class="logo no-focus">
+				Candy
+			</div>
+		</div>
+		<div class="content">
+			<div class="title">Оформление заказа</div>
+			<div class="form telegram-form">
+				<div class="adress">
+					<input type="text" class="adress_input" placeholder="Адрес:" required name="adres">
+					<div class="adress_description no-focus">
+						Внимание! Доставка бесплатная, но только <br>на территории г. Нижний Новгород.
+					</div>
+				</div>
+				<div class="tel">
+					<input type="tel" class="tel_input" placeholder="Контактный номер телефона:" onkeypress="return (event.charCode >= 48 && event.charCode <= 57 && /^\d{0,10}$/.test(this.value));" required name = 'tel'>
+					<div class="tel_description no-focus">
+						Номер телефона нужен для связи с клиентом, если, по каким то причинам, доставка не удается
+					</div>
+				</div>
+				<div class="agree">
+					<input type="checkbox" class = 'check' required name = 'agree'>
+					<p class="no-focus">Я соглашаюсь на обработку персональных данных</p>
+				</div>
+				<div class="list">
+					
+				</div>
+				<div class="main-cost">
+					<div class="itogo">Итоговая цена:</div>
+					<div class="costing">10 000р</div>
+				</div>
+				<div class="end no-focus">
+					
+					<input class="butt" type="submit">
+					</input>
+				</div>
+			</div>
+		</div>
+		<div class="zak">
+			Ваш заказ принят, в ближайшее время его доставят по указанному адресу
+		</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/button.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
+</body>
+</html>
