@@ -29,7 +29,7 @@ setTimeout(function(){mails.scrollTop = mails.scrollHeight}, 100)
 if (localStorage.getItem('string')!=null){
 string = localStorage.getItem('string')}
 if (string == ''){
-    string = `<div class = 'left'>Привет, я webbby, бот - помощник, если вы здесь по поводу портфолио, наберите 'Портфолио'</div>`
+    string = `<div class = 'left'>Привет, я webbby, бот - помощник.</div>`
     mails.innerHTML = string
     localStorage.setItem('string', string)
 }
