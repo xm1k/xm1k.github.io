@@ -564,6 +564,10 @@ if(text == 'color'){
         wait('Открываю', 1)
         setTimeout(function(){window.open('/htmls/Candy/index.html')}, 2000)
     }
+    if(text == 'teacher'){
+        wait('Открываю', 1)
+        setTimeout(function(){window.open('/htmls/teacher/index.html')}, 2000)
+    }
     if (text == 'webbby' & work == false){
         work = true
         webbby()
