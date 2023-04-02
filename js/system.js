@@ -3,6 +3,7 @@ let mails = document.getElementsByClassName('mails')[0]
 string = ''
 let work = false
 let time = document.getElementById('time')
+let jav = document.getElementsByClassName('java')[0]
 let mainBlock = document.getElementsByClassName('main-block')[0]
 if(localStorage.getItem('scroll') == undefined){
     localStorage.setItem('scroll', true)
@@ -18,6 +19,7 @@ if(localStorage.getItem('allf') == undefined){
 }
 
 //
+jav.innerHTML = `<img src="${localStorage.getItem('imgurl')}" alt="">`
 
 if(localStorage.getItem('theme') == undefined){
     localStorage.setItem('theme', 'true')
@@ -95,8 +97,6 @@ function web(t){
 }
 function them(){
     if(theme == 'true'){
-        document.getElementsByClassName('cap')[0].style.opacity = '0'
-        document.getElementsByClassName('cap')[1].style.opacity = '0'
         document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
         document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
         document.getElementsByClassName('logo')[0].style.border =  '3px rgba(206,206,206,0.7) solid'
@@ -105,11 +105,8 @@ function them(){
         document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
         localStorage.setItem('theme', 'false')
         theme = 'false'
-        web('Пока, кружка(')
     }
     else if(theme == 'false'){
-        document.getElementsByClassName('cap')[0].style.opacity = '1'
-        document.getElementsByClassName('cap')[1].style.opacity = '1'
         document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
         document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
         document.getElementsByClassName('logo')[0].style.border =  '3px rgba(0, 0, 0, 0.4) solid'
@@ -118,12 +115,9 @@ function them(){
         document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
         localStorage.setItem('theme', 'true')
         theme = 'true'
-        web('Привееет, кружка)')
     }
 }
 if(theme == 'false'){
-    document.getElementsByClassName('cap')[0].style.opacity = '0'
-    document.getElementsByClassName('cap')[1].style.opacity = '0'
     document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
     document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
     document.getElementsByClassName('logo')[0].style.border =  '3px rgba(206,206,206,0.7) solid'
@@ -132,8 +126,6 @@ if(theme == 'false'){
     document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
 }
 else if(theme == 'true'){
-    document.getElementsByClassName('cap')[0].style.opacity = '1'
-    document.getElementsByClassName('cap')[1].style.opacity = '1'
     document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
     document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
     document.getElementsByClassName('logo')[0].style.border =  '3px rgba(0, 0, 0, 0.4) solid'
@@ -190,7 +182,12 @@ function scr(){
         mails.scrollTop = mails.scrollHeight
     }
 function sms(text){
-    
+    if(text.split('url')[0]=='img'){
+    web('Секундочку')
+    let ll = text.split('url')
+    jav.innerHTML = `<img src="${ll[1]}" alt="">`
+    localStorage.setItem('imgurl',ll[1])
+}
     if (text.split('')[0] == 'f' & text.split('')[1] == '/'){
         t = text.split('/')[1]
         if (/^\d+$/.test(t) == true){
@@ -506,6 +503,10 @@ if(text == 'color'){
         web(t = 'Ну привет)')
         
     }
+    if (text == 'so'){
+        web(t = '?')
+        
+    }
     if(text == 'clear' || text == 'clr'){
         web(t = 'Секунду...')
         setTimeout(function(){
@@ -535,12 +536,17 @@ if(text == 'color'){
     if (text == 't'){
         web(t = 'Открываю...')
         setTimeout(function(){
-            window.open(['https://web.telegram.org/k/'])
+            window.open(['https://web.telegram.org/z/'])
+        }, 100)
+    }
+    if (text == 'mus'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://vk.com/music'])
         }, 100)
     }
     if(text == 'thx'){
-        element(t = `<img src='https://kartinkin.net/uploads/posts/2021-07/1625751450_9-kartinkin-com-p-falshivaya-ulibka-art-art-krasivo-9.jpg' class = 'left'>`)
-        wait('Тебе спасибо', 1)
+        wait('For developer)', 1)
     }
     if(text.split('')[0] == 't' & text.split('')[1] == 'o'){
         let m = 1000
@@ -773,7 +779,7 @@ if(text == 'iloveyou'){
             let n = random(0, 2)
 
             if(n == 0){web('И я!')}
-if(n == 1){web('И я тебя)')}
+            if(n == 1){web('И я тебя)')}
 
         }
 if(text == 'люблютебя'){
@@ -854,6 +860,9 @@ if(text == 'bye'){web('Еще увидимся)')}
                                     if(n == 0){web('>:(')}
                         
                                 }
+                        if(text == 'wow'){web('Да, да, мы можем)')}
+                        if(text == 'cool'){web('А то)')}
+                        if(text == 'beauty'){web('Еще бы)')}
                         if(text == 'расскажисказку'){web('Как дед сменил окраску')}
                         if(text == 'давай'){web('Я не против')}
                         if(text == 'ок'){web('чпОК')}
