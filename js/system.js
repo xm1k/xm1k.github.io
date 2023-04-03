@@ -545,6 +545,18 @@ if(text == 'color'){
             window.open(['https://vk.com/music'])
         }, 100)
     }
+    if (text == 'gm'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://gmail.com'])
+        }, 100)
+    }
+    if (text == 'gh'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://github.com'])
+        }, 100)
+    }
     if(text == 'thx'){
         wait('For developer)', 1)
     }
@@ -860,6 +872,10 @@ if(text == 'bye'){web('Еще увидимся)')}
                                     if(n == 0){web('>:(')}
                         
                                 }
+                        if(text == 'чтосегодня'){web('Что по плану)')}
+                        if(text == 'allright'){web('yeah!')}
+                        if(text == 'haha'){web('hehe)')}
+
                         if(text == 'wow'){web('Да, да, мы можем)')}
                         if(text == 'cool'){web('А то)')}
                         if(text == 'beauty'){web('Еще бы)')}
