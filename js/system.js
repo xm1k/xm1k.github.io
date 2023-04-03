@@ -557,6 +557,12 @@ if(text == 'color'){
             window.open(['https://github.com'])
         }, 100)
     }
+    if (text == 'yt'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://youtube.com'])
+        }, 100)
+    }
     if(text == 'thx'){
         wait('For developer)', 1)
     }
