@@ -5,6 +5,7 @@ let work = false
 let time = document.getElementById('time')
 let jav = document.getElementsByClassName('java')[0]
 let mainBlock = document.getElementsByClassName('main-block')[0]
+let dog = document.getElementsByClassName('chup')[0]
 if(localStorage.getItem('scroll') == undefined){
     localStorage.setItem('scroll', true)
 }
@@ -17,12 +18,41 @@ setInterval(function(){
 if(localStorage.getItem('allf') == undefined){
     localStorage.setItem('allf', '')
 }
+if(localStorage.getItem('srch')==undefined){
+    localStorage.setItem('srch','off')
+}
+srch = localStorage.getItem('srch')
+//
+if(localStorage.getItem('spidl') == undefined){
+    localStorage.setItem('spidl', 350)
+}
 
+let dg = 0
+let ddg=true
+let dogg =setInterval(function(){
+    if (ddg==true){
+        dg++
+    }
+    if (ddg==false){
+        dg--
+    }
+    if(dg==0){
+        ddg=true
+        dog.style.transform='scale(1,1)'
+    }
+    if(dg==250){
+        ddg=false
+        dog.style.transform='scale(1,1)'
+    }
+    dog.style.top=`${dg-100}px`
+},30)
+spidl = +localStorage.getItem('spidl')
+document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
 //
 jav.innerHTML = `<img src="${localStorage.getItem('imgurl')}" alt="">`
 
 if(localStorage.getItem('theme') == undefined){
-    localStorage.setItem('theme', 'true')
+    localStorage.setItem('theme', 'false')
 }
 let theme = localStorage.getItem('theme')
 //
@@ -40,6 +70,16 @@ async function clip(t) {
   }
 mails.innerHTML = string
 document.onkeyup = function(event){
+    if(event.keyCode == 37 & spid == 'true'){
+        spidl=spidl-5
+        document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+        localStorage.setItem('spidl', spidl)
+    }
+    if(event.keyCode == 39 & spid == 'true'){
+        spidl=spidl+5
+        document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+        localStorage.setItem('spidl', spidl)
+    }
     if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
         search.value = ''
     }
@@ -50,7 +90,7 @@ document.onkeyup = function(event){
         user('Я гей')
         search.value = ''
     }
-    if (event.keyCode == 13 & search == document.activeElement & search.value!='' & (search.value.toLowerCase() != 'пошел нахуй' & search.value.toLowerCase() != 'иди нахуй' & search.value.toLowerCase() != 'иди на хуй' & search.value.toLowerCase() != 'пошла нахуй' & search.value.toLowerCase() != 'пошла нахуй!' & search.value.toLowerCase() != 'иди нахуй!'& search.value.toLowerCase() != 'пошел нахуй!')){
+    if ((srch == 'off' || search.value=='srch') & event.keyCode == 13 & search == document.activeElement & search.value!='' & (search.value.toLowerCase() != 'пошел нахуй' & search.value.toLowerCase() != 'иди нахуй' & search.value.toLowerCase() != 'иди на хуй' & search.value.toLowerCase() != 'пошла нахуй' & search.value.toLowerCase() != 'пошла нахуй!' & search.value.toLowerCase() != 'иди нахуй!'& search.value.toLowerCase() != 'пошел нахуй!')){
         let text = search.value
         string+=`<div class="right">
        ${search.value}
@@ -60,8 +100,53 @@ document.onkeyup = function(event){
         mails.innerHTML = string
         sms(text)
     }
+    if (srch == 'on' & event.keyCode == 13 & search == document.activeElement & search.value!='' ){
+        let tet = search.value
+        web(`Поиск: ${search.value}`)
+        localStorage.setItem('string', string)
+        search.value = ''
+        mails.innerHTML = string
+        lll=tet.split(' ')
+        sst=''
+        lll.forEach(function(item, index, array){
+            if (sst!=''){
+            sst=sst+'+'+lll[index]}
+            else{
+                sst=lll[index]
+            }
+        })
+        window.open(`https://www.google.com/search?q=${sst}`)
+    }
     if (event.keyCode == 220 & search == document.activeElement & search.value!=''){
         search.value = ''
+    }
+}
+
+if (localStorage.getItem('spid')==undefined){
+    localStorage.setItem('spid','false')
+}
+let spid = localStorage.getItem('spid')
+if (spid == 'true'){
+        document.getElementsByClassName('chup')[0].style.opacity = '1'
+    }
+function spider(){
+    if (spid == 'true'){
+        spid = 'false'
+        document.getElementsByClassName('chup')[0].style.opacity = '0'
+        let n = random(0, 3)
+        if(n == 0){web('Да здравствует арахнофобия!')}
+        if(n == 1){web('Очистка произошла успешно')}
+        if(n == 2){web('Больше вы его не увидите')}
+        localStorage.setItem('spid','false')
+    }
+    else if (spid == 'false'){
+        spid = 'true'
+        document.getElementsByClassName('chup')[0].style.opacity = '1'
+        let n = random(0, 3)
+        if(n == 0){web('Он всегда возвращается...')}
+        if(n == 1){web('От него нет так просто избавиться...')}
+        if(n == 2){web('Кажется в нашем чате кто то завелся')}
+        localStorage.setItem('spid','true')
     }
 }
 function webbby(){
@@ -103,6 +188,7 @@ function them(){
         document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
         document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
         document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
+        document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
         localStorage.setItem('theme', 'false')
         theme = 'false'
     }
@@ -113,6 +199,7 @@ function them(){
         document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
         document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
         document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
+        document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
         localStorage.setItem('theme', 'true')
         theme = 'true'
     }
@@ -124,6 +211,7 @@ if(theme == 'false'){
     document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
     document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
     document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
+
 }
 else if(theme == 'true'){
     document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
@@ -132,6 +220,7 @@ else if(theme == 'true'){
     document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
     document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
     document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
+    document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
 }
 function element(t){
         setTimeout(function(){
@@ -212,6 +301,15 @@ function sms(text){
         await navigator.clipboard.writeText(t)})()
         web(t = 'Copied')
 }
+if(text == ':)'){web('Никогда не используй ":)", только "=)"')}
+if(text == '=)'){
+            let n = random(0, 3)
+
+            if(n == 0){web('Ты крут!')}
+if(n == 1){web('Cool)')}
+if(n == 2){web('Дада)')}
+
+        }
 if(text.split(' - ') != text){
     let tex = text.split(' - ')[1]
     let ss = text.split(' - ')[0].toLowerCase()
@@ -246,16 +344,18 @@ if(text.split(' - ') != text){
     web('Copied')
 }
 
-if(text.split('_')[0] == 'background'){
-    mainBlock.style.background = `url(${text.split('_')[1]})`
-    mainBlock.style.backgroundSize = `100% 100%`
-    mainBlock.style.backgroundRepeat = `no-repeat`
-    if(text.split('_')[1]!='' & text.split('').includes('_') == true){
-    web('Желательно использовать светлый фон')}
-}
 if(text == ')'){web('<3')}
 
-
+if(text=='srch' & srch=='off'){
+    srch='on'
+    web('Режим поиска')
+    localStorage.setItem('srch','on')
+}
+else if(text=='srch' & srch=='on'){
+    srch='off'
+    web('Режим поиска отключен')
+    localStorage.setItem('srch','off')
+}
 if(text == 'color'){
     let colors = `<div class = 'palitra'>
     <div class = 'color ee0a0a'></div>
@@ -590,7 +690,7 @@ if(text == 'color'){
     }
     if(text == 'teacher'){
         wait('Открываю', 1)
-        setTimeout(function(){window.open('/htmls/teacher/index.html')}, 2000)
+        setTimeout(function(){window.open('https://nomiheeva.ru/')}, 2000)
     }
     if (text == 'webbby' & work == false){
         work = true
@@ -669,7 +769,9 @@ if(text == 'color'){
 if(text == 'theme'){
     them()
 }
-
+if(text == 'spider'){
+    spider()
+}
 if(text == 'reload'){web('run')}
 if(text == 'какты'){
             let n = random(0, 4)
@@ -699,7 +801,6 @@ if(n == 3){web('Не волнуйся за меня')}
 
         }
         if (text == 'умная' | text == 'smart' | text == 'smrt' | text == 'гений'){
-            element(`<img src = 'img/idea.gif'>`)
             setTimeout(function(){web('А то)')}, 1000)
         }
         if(text == 'sure'){web('хехе)')}
@@ -878,6 +979,9 @@ if(text == 'bye'){web('Еще увидимся)')}
                                     if(n == 0){web('>:(')}
                         
                                 }
+                        if(text == 'good'){web('yup!')}
+                        if(text == 'great'){web('sure!')}
+
                         if(text == 'чтосегодня'){web('Что по плану)')}
                         if(text == 'allright'){web('yeah!')}
                         if(text == 'haha'){web('hehe)')}
@@ -895,7 +999,20 @@ if(text == 'bye'){web('Еще увидимся)')}
                         if(text == 'чтотыможешь'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
                         if(text == 'чтотыумеешь'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
                         if(text == 'help'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
+                        if(text == 'круто'){web('А то)')}
+                        if(text == 'реально'){web('куда реальней')}
+                        if(text == 'круто'){web('А то)')}
+                        if(text == 'пойдуяспать'){web('Ну иди)')}
+if(text == 'пойдукаяспать'){web('Ну иди)')}
+if(text == 'поздно'){web('Да, я понимаю')}
+if(text == 'тыкакживая'){web('Ну почти)')}
+
+                        if(text == 'реально'){web('куда реальней')}
+                        if(text == 'чтонаписать'){web('что хочешь')}
+                        if(text == 'чтописать'){web('что хочешь')}
+                        if(text == 'скольковремени'){web('у тебя интернет есть...')}
                         if(text == 'help!'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
+                        if(text == 'help'){web('Чтобы добавить фразу используйте "-", чтобы добавить несколько ответов чередуйте их через точку в "[]" Чтобы скопировать все пиши all')}
                         
 
                 

@@ -14,7 +14,28 @@ body {
   font-family: Nunito;
   color: rgba(0, 0, 0, 0.5);
 }
-
+.chup{
+  position: fixed;
+  top: -80px;
+  left: 350px
+}
+.linn{
+  position: relative;
+  width: 2px;
+  height: 500px;
+  background-color: white;
+  opacity: 0.3;
+  margin-top: -200px;
+  z-index: 4;
+  }
+.chup img{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  margin-left: -74px;
+  margin-top: -90px;
+  z-index: 5;
+}
 .main-block {
   height: 100%;
   width: 100%;
@@ -196,16 +217,17 @@ a:hover {
           transition-duration: 1s;
   width: 45%;
 }
-/*
+
 .clock {
+  display: flex;
   position: fixed;
   right: 3%;
-  top: 20%;
+  bottom: 5%;
   font-size: 450%;
   font-family: "Dancing Script";
   width: 18%;
-  padding-top: 1%;
-  padding-left: 1.5%;
+  padding-top: 0%;
+  padding-left: 0%;
   height: 10%;
   border-radius: 15px;
   border: rgba(0, 0, 0, 0.2) solid;
@@ -221,15 +243,15 @@ a:hover {
 .clock:hover {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
-  top: 22%;
+  bottom: 4%;
 }
-*/
+
 
 #clock{
   font-family:Tahoma, sans-serif;
-  font-size:450%;
+  font-size:2vw;
   font-weight:bold;
-  color:#0000cc;
+  color:rgba(206,206,206,1);
 }
 
 .java {
@@ -295,10 +317,6 @@ a:hover {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
   opacity: 0.7;
-}
-
-#clock{
-  display: none;
 }
 
 #myCanvas{
@@ -439,8 +457,10 @@ a:hover {
 .ffffff {
   background-color: #ffffff;
 }
-
 @media screen and (max-width: 700px) {
+  .clock{
+    display: none;
+  }
   .java {
     display: none;
   }
