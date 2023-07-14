@@ -9,15 +9,23 @@
       user-select: none;
   pointer-events: none;
 }
-
 body {
   font-family: Nunito;
   color: rgba(0, 0, 0, 0.5);
+  cursor: url('/img/default.cur'),auto;
 }
 .chup{
   position: fixed;
   top: -80px;
-  left: 350px
+  left: 350px;
+}
+::selection {
+background: rgba(79,79,79,1);
+color: rgba(144,235,230,1);
+}
+::-moz-selection {
+background: rgba(79,79,79,1);
+color: rgba(144,235,230,1);
 }
 .linn{
   position: relative;
@@ -231,7 +239,7 @@ a:hover {
   height: 10%;
   border-radius: 15px;
   border: rgba(0, 0, 0, 0.2) solid;
-  cursor: pointer;
+  cursor: url('/img/alt.cur'),auto;
   -moz-user-select: -moz-none;
   -o-user-select: none;
   -webkit-user-select: none;
@@ -305,7 +313,7 @@ a:hover {
   height: 60px;
   margin: 20px;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: url('/img/alt.cur'),auto;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
   border: rgba(0, 0, 0, 0) 2px solid;

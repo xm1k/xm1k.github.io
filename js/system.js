@@ -153,13 +153,13 @@ function webbby(){
     setInterval(function(){
         let r = random(1,4)
         if(r==1){
-            web('Ты уже долго работаешь, пора бы отдохнуть)')
+            web('Говорят монитор действует на глаза... Я не замечала)')
         }
         if(r==2){
             web('Пить много воды полезно, лучше работает мозг')
         }
         if(r==3){
-            web('Света наверное скучает...')
+            web('Продолжай в том же духе!')
 
         }
     }, 1800000)
@@ -768,6 +768,16 @@ if(text == 'theme'){
 if(text == 'spider'){
     spider()
 }
+if(text=='spidl'){
+    spidl=spidl-5
+    localStorage.setItem('spidl', spidl)
+    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+}
+if(text=='spidr'){
+    spidl=spidl+5
+    localStorage.setItem('spidl', spidl)
+    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+}
 if(text == 'reload'){web('run')}
 if(text == 'какты'){
             let n = random(0, 4)
@@ -912,17 +922,6 @@ if(n == 1){web('И я тебя)')}
 
         }
 if(text == 'bye'){web('Еще увидимся)')}
-
-
-                 
-                if(text == 'relax'){  
-                    wait('Как скажешь', 1)  
-                    wait('Выбери что-нибудь', 2)  
-                    setTimeout(function(){element(`<a href="https://cdn.semyana.website/17/10/25/248428.mp4" target="_ blank" >Сестра брату</a>`)}, 3000) 
-                    setTimeout(function(){element(`<a href="https://embeds.ah-me.com/embed/911355" target="_ blank" >Доча с папой</a>`)}, 3000)
-                    setTimeout(function(){element(`<a href="https://yastatic.net/video-player/0x34e08fd964a/pages-common/iframe-default/iframe-default.html#html=%3Ciframe%20src%3D%22https%3A%2F%2Fnmcorp.video%2Fplayer%2F-159745528_456239903%3Fm%3Db46833af5fef99c4052d3625a98c0ff0%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20allowfullscreen%3D%221%22%20allow%3D%22autoplay%3B%20fullscreen%3B%20accelerometer%3B%20gyroscope%3B%20picture-in-picture%22%20aria-label%3D%22Video%22%3E%3C%2Fiframe%3E&hidden=externalPlayback&counters=%7B%22reqid%22%3A%221656753119971787-14334831740810629738-vla1-5786-vla-l7-balancer-8080-BAL-3202%22%2C%22duration%22%3A2808%2C%22live%22%3Afalse%2C%22videoUrl%22%3A%22http%3A%2F%2Fnoodlemagazine.com%2Fwatch%2F-159745528_456239903%22%2C%22heartbeats%22%3A%7B%22singlePath%22%3A%22heartbeat.single.fserp%22%2C%22noRepeat%22%3Atrue%7D%2C%22table%22%3A%22video_tech%22%7D" target="_ blank" >Теща</a>`)}, 3000) 
-                    setTimeout(function(){element(`<a href="https://yastatic.net/video-player/0x34e08fd964a/pages-common/iframe-default/iframe-default.html#html=%3Ciframe%20src%3D%22%2F%2Fwww.ebalka.video%2Fembed%2F86875%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20allowfullscreen%3D%221%22%20allow%3D%22autoplay%3B%20fullscreen%3B%20accelerometer%3B%20gyroscope%3B%20picture-in-picture%22%20aria-label%3D%22Video%22%3E%3C%2Fiframe%3E&hidden=externalPlayback&counters=%7B%22reqid%22%3A%221656753320483676-9071948606988612783-vla1-5786-vla-l7-balancer-8080-BAL-736%22%2C%22duration%22%3A672%2C%22live%22%3Afalse%2C%22videoUrl%22%3A%22http%3A%2F%2Febalko.net%2Fvideos%2F86875%2Fsestra-podlechila-brata-rotikom-i-kiskoy%2F%22%2C%22heartbeats%22%3A%7B%22singlePath%22%3A%22heartbeat.single.fserp%22%2C%22noRepeat%22%3Atrue%7D%2C%22table%22%3A%22video_tech%22%7D" target="_ blank" >Сестра (new)</a>`)}, 3000)    
-                }
                 if(text == 'hey'){web('?')}
                 if(text == 'яздесь'){web('Я скучала)')}
                 if(text == 'готово'){web('Ура!)')}
@@ -931,7 +930,9 @@ if(text == 'bye'){web('Еще увидимся)')}
                 if(text == 'hi'){web('Приветик)')}
                 if(text == 'пипец'){web('Именно')}
                 if(text == 'ого'){web('А то)')}
-                if(text == 'обиднно'){
+                if(text == 'ато'){web('А и правда!')}
+                if(text == 'незнаю'){web('Надо знать')}
+                if(text == 'жалко'){
                             let n = random(0, 3)
                 
                             if(n == 0){web('За что?')}
