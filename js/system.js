@@ -10,10 +10,10 @@ if(localStorage.getItem('scroll') == undefined){
     localStorage.setItem('scroll', true)
 }
 let now = new Date()
-time.innerHTML = `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`
+time.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
 setInterval(function(){
     now = new Date()
-    time.innerHTML = `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`
+    time.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`  
 }, 1000)
 if(localStorage.getItem('allf') == undefined){
     localStorage.setItem('allf', '')
@@ -90,7 +90,7 @@ document.onkeyup = function(event){
         user('Я гей')
         search.value = ''
     }
-    if ((srch == 'off' || search.value=='srch') & event.keyCode == 13 & search == document.activeElement & search.value!='' & (search.value.toLowerCase() != 'пошел нахуй' & search.value.toLowerCase() != 'иди нахуй' & search.value.toLowerCase() != 'иди на хуй' & search.value.toLowerCase() != 'пошла нахуй' & search.value.toLowerCase() != 'пошла нахуй!' & search.value.toLowerCase() != 'иди нахуй!'& search.value.toLowerCase() != 'пошел нахуй!')){
+    if ((srch == 'off' || search.value.toLowerCase()=='srch') & event.keyCode == 13 & search == document.activeElement & search.value!='' & (search.value.toLowerCase() != 'пошел нахуй' & search.value.toLowerCase() != 'иди нахуй' & search.value.toLowerCase() != 'иди на хуй' & search.value.toLowerCase() != 'пошла нахуй' & search.value.toLowerCase() != 'пошла нахуй!' & search.value.toLowerCase() != 'иди нахуй!'& search.value.toLowerCase() != 'пошел нахуй!')){
         let text = search.value
         string+=`<div class="right">
        ${search.value}
@@ -346,17 +346,17 @@ if(text.split(' - ') != text){
 
 if(text == ')'){web('<3')}
 
-if(text=='srch' & srch=='off'){
+if(text.toLowerCase()=='srch' & srch=='off'){
     srch='on'
     web('Режим поиска')
     localStorage.setItem('srch','on')
 }
-else if(text=='srch' & srch=='on'){
+else if(text.toLowerCase()=='srch' & srch=='on'){
     srch='off'
     web('Режим поиска отключен')
     localStorage.setItem('srch','off')
 }
-if(text == 'color'){
+if(text.toLowerCase() == 'color'){
     let colors = `<div class = 'palitra'>
     <div class = 'color ee0a0a'></div>
     <div class = 'color e63c3c'></div>
@@ -706,10 +706,6 @@ if(text == 'color'){
             web('И снова в работу!)')
         }
     }
-    if(text == 'портфолио'){
-        web('Открываю...')
-        setTimeout(function(){window.open('/htmls/Portfolio/index.html')}, 1000)
-    }
     if(text == 'scroll' || text == 'scrl'){
         scr()
     }
@@ -1001,12 +997,12 @@ if(text == 'bye'){web('Еще увидимся)')}
                         if(text == 'help'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
                         if(text == 'круто'){web('А то)')}
                         if(text == 'реально'){web('куда реальней')}
-                        if(text == 'круто'){web('А то)')}
                         if(text == 'пойдуяспать'){web('Ну иди)')}
 if(text == 'пойдукаяспать'){web('Ну иди)')}
 if(text == 'поздно'){web('Да, я понимаю')}
 if(text == 'тыкакживая'){web('Ну почти)')}
-
+if(text == 'js'){web('На нём меня создали')}
+if(text == 'паук'){web('Попробуйте "spider"')}
                         if(text == 'реально'){web('куда реальней')}
                         if(text == 'чтонаписать'){web('что хочешь')}
                         if(text == 'чтописать'){web('что хочешь')}
