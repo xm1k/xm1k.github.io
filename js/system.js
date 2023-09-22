@@ -85,19 +85,7 @@ document.onkeyup = function(event){
     }
 
 
-    if (event.keyCode === 81 && search.value.toLowerCase().charAt(search.value.length - 2) === 'q') {
-        let userInput = search.value.toLowerCase();
-        gpt(userInput)
-        .then(answer => {
-            web('Ответ GPT-3:', answer);
-        // Здесь вы можете обработать и отобразить ответ на вашем сайте
-        })
-        .catch(error => {
-            console.error('Ошибка при получении ответа GPT-3:', error);
-        });
 
-        search.value=''
-    }
 
 
     if (event.keyCode === 191 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
@@ -162,32 +150,36 @@ if (spid == 'true'){
 
 //CHAT GPT 
 
-function gpt(userInput) {
+async function gpt(userInput) {
     // Здесь вместо 'YOUR_API_KEY' укажите ваш API-ключ GPT-3
-    const apiKey = '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';
+    const apiKey = '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';
 
-    return fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-            prompt: userInput,
-            max_tokens: 50, // Максимальное количество токенов в ответе
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
+    try {
+        const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+                prompt: userInput,
+                max_tokens: 50, // Максимальное количество токенов в ответе
+            }),
+        });
+        
+        if (!response.ok) {
+            throw new Error('Ошибка при запросе к GPT-3');
+        }
+
+        const data = await response.json();
         return data.choices[0].text;
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('Ошибка при запросе к GPT-3:', error);
         throw error; // Можно обработать ошибку дальше, если нужно
-    });
+    }
 }
 
-
+// Пример использования функции:
 
 //
 
@@ -213,21 +205,6 @@ function spider(){
         localStorage.setItem('spid','true')
     }
 }
-function webbby(){
-    setInterval(function(){
-        let r = random(1,4)
-        if(r==1){
-            web('Говорят монитор действует на глаза... Я не замечала)')
-        }
-        if(r==2){
-            web('Пить много воды полезно, лучше работает мозг')
-        }
-        if(r==3){
-            web('Продолжай в том же духе!')
-
-        }
-    }, 1800000)
-}
 function wait(t,n = 1){
     setTimeout(function(){
         web(t)
@@ -244,6 +221,20 @@ function web(t){
     audio.src = './sounds/sound.mp3'
     audio.autoplay = true
 }
+document.onkeyup = function(event){
+    if (event.keyCode === 81 && search.value.toLowerCase().charAt(search.value.length - 2) === 'q') {
+        async function main() {
+        const userInput = search.value.toLowerCase();
+        const gptResponse = await gpt(userInput);
+        web(gptResponse); // Вывести ответ GPT-3 в консоль
+        }
+
+        main();
+
+        search.value=''
+    }
+}
+
 function them(){
     if(theme == 'true'){
         document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
@@ -763,7 +754,6 @@ if(text.toLowerCase() == 'color'){
     }
     if (text == 'webbby' & work == false){
         work = true
-        webbby()
         let r = random(1,4)
         if(r == 3){
             web('Привет! Чем займемся сегодня?')
