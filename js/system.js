@@ -148,43 +148,6 @@ if (spid == 'true'){
     }
 
 
-//CHAT GPT 
-
-async function gpt(userInput) {
-    // Здесь вместо 'YOUR_API_KEY' укажите ваш API-ключ GPT-3
-    const apiKey = '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';
-
-    try {
-        const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-                prompt: userInput,
-                max_tokens: 50, // Максимальное количество токенов в ответе
-            }),
-        });
-        
-        if (!response.ok) {
-            throw new Error('Ошибка при запросе к GPT-3');
-        }
-
-        const data = await response.json();
-        return data.choices[0].text;
-    } catch (error) {
-        console.error('Ошибка при запросе к GPT-3:', error);
-        throw error; // Можно обработать ошибку дальше, если нужно
-    }
-}
-
-// Пример использования функции:
-
-//
-
-
-
 function spider(){
     if (spid == 'true'){
         spid = 'false'
@@ -221,20 +184,6 @@ function web(t){
     audio.src = './sounds/sound.mp3'
     audio.autoplay = true
 }
-document.onkeyup = function(event){
-    if (event.keyCode === 81 && search.value.toLowerCase().charAt(search.value.length - 2) === 'q') {
-        async function main() {
-        const userInput = search.value.toLowerCase();
-        const gptResponse = await gpt(userInput);
-        web(gptResponse); // Вывести ответ GPT-3 в консоль
-        }
-
-        main();
-
-        search.value=''
-    }
-}
-
 function them(){
     if(theme == 'true'){
         document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
@@ -703,6 +652,24 @@ if(text.toLowerCase() == 'color'){
         web(t = 'Открываю...')
         setTimeout(function(){
             window.open(['https://vk.com/music'])
+        }, 100)
+    }
+    if (text == 'gpt'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://chat.openai.com/c/65f557f5-b24d-438e-8745-4f85cc1fda58'])
+        }, 100)
+    }
+    if (text == 'ru'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://translate.google.com/?hl=ru&sl=ru&tl=en&op=translate'])
+        }, 100)
+    }
+    if (text == 'en'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://translate.google.com/?hl=ru&sl=en&tl=ru&op=translate'])
         }, 100)
     }
     if (text == 'gm'){
