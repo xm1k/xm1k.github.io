@@ -146,7 +146,17 @@ let spid = localStorage.getItem('spid')
 if (spid == 'true'){
         document.getElementsByClassName('chup')[0].style.opacity = '1'
     }
+document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
+        e.preventDefault();
+    }
+});
 
+document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
+        e.preventDefault();
+    }
+});
 
 function spider(){
     if (spid == 'true'){
