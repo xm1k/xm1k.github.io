@@ -83,6 +83,35 @@ document.onkeyup = function(event){
     if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
         search.value = ''
     }
+
+
+    if (event.keyCode === 81 && search.value.toLowerCase().charAt(search.value.length - 2) === 'q') {
+        let userInput = search.value.toLowerCase();
+        gpt(userInput)
+        .then(answer => {
+            web('Ответ GPT-3:', answer);
+        // Здесь вы можете обработать и отобразить ответ на вашем сайте
+        })
+        .catch(error => {
+            console.error('Ошибка при получении ответа GPT-3:', error);
+        });
+
+        search.value=''
+    }
+
+
+    if (event.keyCode === 191 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
+        window.open(`https://www.google.com/search?q=${search.value.split('..')[0]}`)
+        search.value=''
+    }
+    if (event.keyCode === 31 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
+        window.open(`https://www.google.com/search?q=${search.value.split('..')[0]}`)
+        search.value=''
+    }
+    if (event.keyCode === 191 && search.value.toLowerCase().charAt(search.value.length - 2) === '/') {
+        window.open(`https://www.google.com/search?q=${search.value.split('//')[0]}`)
+        search.value=''
+    }
     if(event.keyCode == 219 & search == document.activeElement & search.value.split('')[search.value.split('').length-1]!='х' & search.value.split('')[search.value.split('').length-1]!=']' & search.value.split('')[search.value.split('').length-1]!='{' & search.value.split('')[search.value.split('').length-1]!='Х'){
         search.value +=']'
     }
@@ -129,6 +158,41 @@ let spid = localStorage.getItem('spid')
 if (spid == 'true'){
         document.getElementsByClassName('chup')[0].style.opacity = '1'
     }
+
+
+//CHAT GPT 
+
+function gpt(userInput) {
+    // Здесь вместо 'YOUR_API_KEY' укажите ваш API-ключ GPT-3
+    const apiKey = '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';
+
+    return fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+            prompt: userInput,
+            max_tokens: 50, // Максимальное количество токенов в ответе
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        return data.choices[0].text;
+    })
+    .catch(error => {
+        console.error('Ошибка при запросе к GPT-3:', error);
+        throw error; // Можно обработать ошибку дальше, если нужно
+    });
+}
+
+
+
+//
+
+
+
 function spider(){
     if (spid == 'true'){
         spid = 'false'
@@ -189,6 +253,7 @@ function them(){
         document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
         document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
         document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
+        document.getElementsByClassName('chup')[0].style.opacity = '1'
         localStorage.setItem('theme', 'false')
         theme = 'false'
     }
@@ -200,6 +265,7 @@ function them(){
         document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
         document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
         document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
+        document.getElementsByClassName('chup')[0].style.opacity = '0.7'
         localStorage.setItem('theme', 'true')
         theme = 'true'
     }
@@ -211,6 +277,8 @@ if(theme == 'false'){
     document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
     document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
     document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
+    document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
+    document.getElementsByClassName('chup')[0].style.opacity = '1'
 
 }
 else if(theme == 'true'){
@@ -221,6 +289,7 @@ else if(theme == 'true'){
     document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
     document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
     document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
+    document.getElementsByClassName('chup')[0].style.opacity = '0.7'
 }
 function element(t){
         setTimeout(function(){
@@ -813,14 +882,6 @@ if(n == 3){web('Не волнуйся за меня')}
         if(text == 'x'){
             window.open(['https://xm1k.github.io'])
         }
-        if(text == 'яустал'){
-                    let n = random(0, 3)
-        
-                    if(n == 0){web('Так отдохни!!')}
-        if(n == 1){web('А ну, живо отдыхать')}
-        if(n == 2){web('Не перенапрягайся')}
-        
-                }
                 if(text == 'hello'){
                     let n = random(0, 3)
         
@@ -869,15 +930,6 @@ if(n == 3){web('Не волнуйся за меня')}
         
                 }
                 if(text == 'пока'){web('До встречи)')}
-                if(text == 'java'){web('Мое любимое слово!')}
-                if(text == 'умничка'){web('Ну лааадно тебе)')}
-                if(text == 'молодец'){web('Смущаешь)')}
-                if(text == 'ладнодавай'){web('Давай)')}
-                if(text == 'дозавтра'){web('До завтра)')}
-                if(text == 'моято'){web('хехее)')}
-                if(text == 'хочуесть'){web('Так сходиии')}
-                if(text == 'яхочуесть'){web('Так сходии, поешь')}
-                if(text == 'умница'){web('Я такааая)')}
                 if(text == 'спасибо'){web('обращайся))')}
                 if(text == 'ok'){web('sure)')}
                 if(text == 'letsgo'){web('За работу!')}
@@ -886,41 +938,6 @@ if(n == 3){web('Не волнуйся за меня')}
 if(text == 'ничего'){web('((')}
 if(text == 'але'){web('да?')}
 if(text == 'swag'){web('Да ты крут)')}
-if(text == 'lu'){
-            let n = random(0, 2)
-
-            if(n == 0){web('И я!')}
-if(n == 1){web('И я тебя)')}
-
-        }
-if(text == 'ilu'){
-            let n = random(0, 2)
-
-            if(n == 0){web('И я!')}
-if(n == 1){web('И я тебя)')}
-
-        }
-if(text == 'iloveyou'){
-            let n = random(0, 2)
-
-            if(n == 0){web('И я!')}
-            if(n == 1){web('И я тебя)')}
-
-        }
-if(text == 'люблютебя'){
-            let n = random(0, 2)
-
-            if(n == 0){web('И я!')}
-if(n == 1){web('И я тебя)')}
-
-        }
-if(text == 'ялюблютебя'){
-            let n = random(0, 2)
-
-            if(n == 0){web('И я!')}
-if(n == 1){web('И я тебя)')}
-
-        }
 if(text == 'bye'){web('Еще увидимся)')}
                 if(text == 'hey'){web('?')}
                 if(text == 'яздесь'){web('Я скучала)')}
@@ -955,14 +972,6 @@ if(text == 'bye'){web('Еще увидимся)')}
                 if(n == 1){web('Я такая')}
                 
                         }
-                if(text == 'аллергия'){
-                            let n = random(0, 3)
-                
-                            if(n == 0){web('О нет!')}
-                if(n == 1){web('Ну вот(')}
-                if(n == 2){web('Жалко тебя')}
-                
-                        }
                         if(text == 'yeah'){web('sure')}
                         if(text == 'досвидания'){
                                     let n = random(0, 1)
@@ -993,23 +1002,15 @@ if(text == 'bye'){web('Еще увидимся)')}
                         if(text == 'goodnight'){web('Sweeety dreams)')}
                         if(text == 'даладно'){web('Правда, правда)')}
                         if(text == 'ктоты'){web('Я же сказала, что меня зовут webbby, и я web помощник')}
-                        if(text == 'чтотыможешь'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
-                        if(text == 'чтотыумеешь'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
-                        if(text == 'help'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
                         if(text == 'круто'){web('А то)')}
                         if(text == 'реально'){web('куда реальней')}
-                        if(text == 'пойдуяспать'){web('Ну иди)')}
-if(text == 'пойдукаяспать'){web('Ну иди)')}
-if(text == 'поздно'){web('Да, я понимаю')}
-if(text == 'тыкакживая'){web('Ну почти)')}
 if(text == 'js'){web('На нём меня создали')}
 if(text == 'паук'){web('Попробуйте "spider"')}
                         if(text == 'реально'){web('куда реальней')}
                         if(text == 'чтонаписать'){web('что хочешь')}
                         if(text == 'чтописать'){web('что хочешь')}
                         if(text == 'скольковремени'){web('у тебя интернет есть...')}
-                        if(text == 'help!'){web('Нууу, если вам интересен мой функционал, можете поговорить с моим создателем)')}
-                        if(text == 'help'){web('Чтобы добавить фразу используйте "-", чтобы добавить несколько ответов чередуйте их через точку в "[]" Чтобы скопировать все пиши all')}
+                        if(text == 'help'){web('Ты программист или кто, читай код, спроси создателя')}
                         
 
                 
