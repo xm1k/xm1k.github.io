@@ -96,6 +96,10 @@ document.onkeyup = function(event){
         window.open(`https://www.google.com/search?q=${search.value.split('..')[0]}`)
         search.value=''
     }
+    if (event.keyCode === 32 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
+        window.open(`https://www.google.com/search?q=${search.value.split('..')[0]}`)
+        search.value=''
+    }
     if (event.keyCode === 191 && search.value.toLowerCase().charAt(search.value.length - 2) === '/') {
         window.open(`https://www.google.com/search?q=${search.value.split('//')[0]}`)
         search.value=''
