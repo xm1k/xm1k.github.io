@@ -668,6 +668,12 @@ if(text.toLowerCase() == 'color'){
             window.open(['https://vk.com/music'])
         }, 100)
     }
+    if (text == 'ym' || text == 'яп'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://mail.yandex.ru/?uid=1130000064816062#inbox'])
+        }, 100)
+    }
     if (text == 'gpt'){
         web(t = 'Открываю...')
         setTimeout(function(){
