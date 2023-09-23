@@ -697,6 +697,24 @@ if(text.toLowerCase() == 'color'){
             window.open(['https://vk.com/music'])
         }, 100)
     }
+    if (text == 'io'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://xm1k.github.io'])
+        }, 100)
+    }
+    if (text == 'xmik'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://xm1k.github.io'])
+        }, 100)
+    }
+    if (text == 'xm1k'){
+        web(t = 'Открываю...')
+        setTimeout(function(){
+            window.open(['https://xm1k.github.io'])
+        }, 100)
+    }
     if (text == 'ym' || text == 'яп'){
         web(t = 'Открываю...')
         setTimeout(function(){
