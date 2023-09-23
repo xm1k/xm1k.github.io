@@ -10,10 +10,16 @@ if(localStorage.getItem('scroll') == undefined){
     localStorage.setItem('scroll', true)
 }
 let now = new Date()
-time.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+let hours = ('0' + now.getHours()).slice(-2);
+let minutes = ('0' + now.getMinutes()).slice(-2);
+let seconds = ('0' + now.getSeconds()).slice(-2);
+time.innerHTML = `${hours}:${minutes}:${seconds}`
 setInterval(function(){
     now = new Date()
-    time.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`  
+    let hours = ('0' + now.getHours()).slice(-2);
+    let minutes = ('0' + now.getMinutes()).slice(-2);
+    let seconds = ('0' + now.getSeconds()).slice(-2);
+    time.innerHTML = `${hours}:${minutes}:${seconds}` 
 }, 1000)
 if(localStorage.getItem('allf') == undefined){
     localStorage.setItem('allf', '')
@@ -26,6 +32,11 @@ srch = localStorage.getItem('srch')
 if(localStorage.getItem('spidl') == undefined){
     localStorage.setItem('spidl', 350)
 }
+
+window.onload = function() {
+            search.focus();
+        };
+
 
 let dg = 0
 let ddg=true
@@ -69,17 +80,10 @@ async function clip(t) {
     await navigator.clipboard.writeText(t)
   }
 mails.innerHTML = string
+document.addEventListener("keydown", function() {
+            search.focus();
+        });
 document.onkeyup = function(event){
-    if(event.keyCode == 37 & spid == 'true'){
-        spidl=spidl-5
-        document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
-        localStorage.setItem('spidl', spidl)
-    }
-    if(event.keyCode == 39 & spid == 'true'){
-        spidl=spidl+5
-        document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
-        localStorage.setItem('spidl', spidl)
-    }
     if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
         search.value = ''
     }
@@ -138,7 +142,7 @@ document.onkeyup = function(event){
         })
         window.open(`https://www.google.com/search?q=${sst}`)
     }
-    if (event.keyCode == 220 & search == document.activeElement & search.value!=''){
+    if (event.keyCode == 46 & search == document.activeElement & search.value!=''){
         search.value = ''
     }
 }
@@ -150,17 +154,18 @@ let spid = localStorage.getItem('spid')
 if (spid == 'true'){
         document.getElementsByClassName('chup')[0].style.opacity = '1'
     }
-document.addEventListener('keydown', function (e) {
-    if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
-        e.preventDefault();
-    }
-});
 
-document.addEventListener('keydown', function (e) {
-    if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
-        e.preventDefault();
-    }
-});
+// document.addEventListener('keydown', function (e) {
+//     if ((e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
+//         e.preventDefault();
+//     }
+// });
+
+// document.addEventListener('keydown', function (e) {
+//     if ((e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
+//         e.preventDefault();
+//     }
+// });
 
 function spider(){
     if (spid == 'true'){
@@ -294,12 +299,18 @@ function scr(){
         mails.scrollTop = mails.scrollHeight
     }
 function sms(text){
-    if(text.split('url')[0]=='img'){
+    if(text.split('url')[0]=='img' && text.split('url')[1]!='stock'){
     web('Секундочку')
     let ll = text.split('url')
     jav.innerHTML = `<img src="${ll[1]}" alt="">`
     localStorage.setItem('imgurl',ll[1])
 }
+    if(text.split('url')[0]=='img' && text.split('url')[1]=='stock'){
+        web('Секундочку')
+        let ll = "https://n1s1.elle.ru/6d/98/75/6d98752e8bde9ae1e72769397d110e9e/728x728_1_5675ffbc3f62eb2dbc6633710c0cd133@1000x1000_0xac120002_18636153211535967679.jpeg"
+        jav.innerHTML = `<img src="${ll}" alt="">`
+        localStorage.setItem('imgurl',ll)
+    }
     if (text.split('')[0] == 'f' & text.split('')[1] == '/'){
         t = text.split('/')[1]
         if (/^\d+$/.test(t) == true){
@@ -366,7 +377,25 @@ if(text.split(' - ') != text){
     clip(s)
     web('Copied')
 }
-
+if(text=='spiderreset'){
+    spidl=350
+    localStorage.setItem('spidl', spidl)
+    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+}
+if(text.split('=')[0]=='spidl'){
+    let spl=text.split('=')[1]
+    spl=+spl
+    spidl=spidl-spl
+    localStorage.setItem('spidl', spidl)
+    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+}
+if(text.split('=')[0]=='spidr'){
+    let spl=text.split('=')[1]
+    spl=+spl
+    spidl=spidl+spl
+    localStorage.setItem('spidl', spidl)
+    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
+}
 if(text == ')'){web('<3')}
 
 if(text.toLowerCase()=='srch' & srch=='off'){
@@ -731,15 +760,7 @@ if(text.toLowerCase() == 'color'){
         clip(t)
         web('Copied')
     }
-    if(text == 'candy'){
-        wait('Открываю', 1)
-        setTimeout(function(){window.open('/htmls/Candy/index.html')}, 2000)
-    }
-    if(text == 'teacher'){
-        wait('Открываю', 1)
-        setTimeout(function(){window.open('https://nomiheeva.ru/')}, 2000)
-    }
-    if (text == 'webbby' & work == false){
+        if (text == 'webbby' & work == false){
         work = true
         let r = random(1,4)
         if(r == 3){
@@ -813,16 +834,6 @@ if(text == 'theme'){
 }
 if(text == 'spider'){
     spider()
-}
-if(text=='spidl'){
-    spidl=spidl-5
-    localStorage.setItem('spidl', spidl)
-    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
-}
-if(text=='spidr'){
-    spidl=spidl+5
-    localStorage.setItem('spidl', spidl)
-    document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
 }
 if(text == 'reload'){web('run')}
 if(text == 'какты'){

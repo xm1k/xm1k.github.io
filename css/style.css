@@ -44,6 +44,9 @@ color: rgba(144,235,230,1);
   margin-top: -90px;
   z-index: 5;
 }
+.search{
+  caret-color:auto;
+}
 .main-block {
   height: 100%;
   width: 100%;
