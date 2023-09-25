@@ -52,6 +52,7 @@ color: rgba(144,235,230,1);
   width: 100%;
 }
 
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -264,7 +265,6 @@ a:hover {
   font-weight:bold;
   color:rgba(206,206,206,1);
 }
-
 .java {
   position: fixed;
   left: 3%;
@@ -277,6 +277,87 @@ a:hover {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+}
+.tasker{
+  position: fixed;
+  right: 1.5%;
+  top: 12%;
+  width: 22%;
+  height: 68%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border-radius: 15px;
+  background-color: rgba(206,206,206,0.15);
+}
+.tasker .title{
+  margin: 5%;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  opacity: 0.5;
+  color: rgba(206,206,206,0.5);
+}
+.tasks{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow: auto;
+  overflow-x: clip;
+
+}
+.task{
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,0.083);
+  width: 90%;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 9px;
+  max-height: auto;
+  transition-duration: 0.3s;
+
+}
+.task .circle {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  min-width: 40px;
+  margin-right: 10px;
+  min-height: 40px;
+  background-color: gray;
+  margin-left: 20px;
+  border-radius: 50%;
+  opacity: 0.2;
+  transition-duration: 0.5s;
+  border: 3px rgba(0,0,0,0) dashed;
+}
+.task .circle:hover {
+  rotate:90deg;
+  cursor: pointer;
+  min-width: 42px;
+  margin-right: 8px;
+  margin-bottom: 11px;
+  margin-top: 11px;
+  min-height: 42px;
+  margin-left: 20px;
+  border-radius: 50%;
+  opacity: 0.1;
+  border: 3px white dashed;
+}
+.task .circle_desc{
+  opacity: 0.5;
+  font-size: 25px;
+  margin-left:10px;
+  margin-right: 10px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 70%;
+  word-wrap:break-word;
 }
 .java img{
   height: 100%;
@@ -473,6 +554,9 @@ a:hover {
     display: none;
   }
   .java {
+    display: none;
+  }
+  .tasker{
     display: none;
   }
 

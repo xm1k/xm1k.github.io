@@ -37,6 +37,72 @@ window.onload = function() {
             search.focus();
         };
 
+// - - - TASKER - - -
+
+
+if(localStorage.getItem('tasker')==undefined){
+    localStorage.setItem('tasker','')
+}
+
+tasker=localStorage.getItem('tasker')
+listTasker=[]
+tasker.split('/').forEach(function(item, index, array){
+    if(item!=''){
+        listTasker.push(item)
+    }
+})
+stringTasker=''
+
+if(listTasker.length>1){
+listTasker.forEach(function(item, index, array){
+    if(item!=''){
+    stringTasker+=`<div class="task">
+                        <div class="circle"></div>
+                        <div class="circle_desc">${item}</div>
+                    </div>`}
+})}
+document.getElementsByClassName('tasks')[0].innerHTML=stringTasker
+
+// Обработчик нажатий
+cir=function(){
+let circle = document.getElementsByClassName('circle')
+let circles = Array.from(circle);
+circles.forEach((object, index) => {
+     if (!object.classList.contains('click-listener-added')){
+
+    object.classList.add('click-listener-added');
+    object.addEventListener('click', () => {
+    document.getElementsByClassName('task')[index].style.marginRight=`-${ document.getElementsByClassName('task')[index].offsetWidth}px`
+    document.getElementsByClassName('task')[index].style.opacity='0'
+    setTimeout(function(){
+        document.getElementsByClassName('task')[index].style.marginTop=`-${document.getElementsByClassName('task')[index].offsetHeight}px`
+        document.getElementsByClassName('task')[index].style.marginBottom='0px'
+
+}, 300)
+    listTasker.splice(index,1)
+
+    tasker=''
+    stringTasker=''
+    listTasker.forEach(function(item, index, array){
+        tasker+='/'+item
+        if(item!=''){
+        stringTasker+=`<div class="task">
+                            <div class="circle"></div>
+                            <div class="circle_desc">${item}</div>
+                        </div>`}
+    })
+
+    setTimeout(function(){
+        localStorage.setItem('tasker',tasker)
+        document.getElementsByClassName('tasks')[0].innerHTML=stringTasker
+        cir()
+    }, 600)
+  },{once: true});}
+});
+
+}
+cir()
+//
 
 let dg = 0
 let ddg=true
@@ -82,10 +148,18 @@ async function clip(t) {
 mails.innerHTML = string
 document.addEventListener("keydown", function() {
             search.focus();
-        });
+        })
+document.addEventListener('keydown', (ev) => {
+    if (ev.code == 'KeyS' && ev.ctrlKey) {
+        ev.preventDefault()
+        save_options()
+    }
+  })
+
 document.onkeyup = function(event){
     if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
         search.value = ''
+        alert(listTasker)
     }
 
 
@@ -97,10 +171,6 @@ document.onkeyup = function(event){
         search.value=''
     }
     if (event.keyCode === 31 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
-        window.open(`https://www.google.com/search?q=${search.value.split('..')[0]}`)
-        search.value=''
-    }
-    if (event.keyCode === 32 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
         window.open(`https://www.google.com/search?q=${search.value.split('..')[0]}`)
         search.value=''
     }
@@ -207,24 +277,26 @@ function them(){
     if(theme == 'true'){
         document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
         document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
-        document.getElementsByClassName('logo')[0].style.border =  '3px rgba(206,206,206,0.7) solid'
+        document.getElementsByClassName('logo')[0].style.border =  '2px rgba(206,206,206,0.4) solid'
         document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
         document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
         document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
         document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
         document.getElementsByClassName('chup')[0].style.opacity = '1'
+        document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(250,250,250,0.1) 2px dashed';
         localStorage.setItem('theme', 'false')
         theme = 'false'
     }
     else if(theme == 'false'){
         document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
         document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
-        document.getElementsByClassName('logo')[0].style.border =  '3px rgba(0, 0, 0, 0.4) solid'
+        document.getElementsByClassName('logo')[0].style.border =  '2px rgba(0, 0, 0, 0.4) solid'
         document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
         document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
         document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
         document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
         document.getElementsByClassName('chup')[0].style.opacity = '0.7'
+        document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(0, 0, 0, 0.1) 2px dashed';
         localStorage.setItem('theme', 'true')
         theme = 'true'
     }
@@ -232,23 +304,25 @@ function them(){
 if(theme == 'false'){
     document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
     document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
-    document.getElementsByClassName('logo')[0].style.border =  '3px rgba(206,206,206,0.7) solid'
+    document.getElementsByClassName('logo')[0].style.border =  '2px rgba(206,206,206,0.4) solid'
     document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
     document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
     document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
     document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
     document.getElementsByClassName('chup')[0].style.opacity = '1'
+    document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(250,250,250,0.1) 2px dashed';
 
 }
 else if(theme == 'true'){
     document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
     document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
-    document.getElementsByClassName('logo')[0].style.border =  '3px rgba(0, 0, 0, 0.4) solid'
+    document.getElementsByClassName('logo')[0].style.border =  '2px rgba(0, 0, 0, 0.4) solid'
     document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
     document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
     document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
     document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
     document.getElementsByClassName('chup')[0].style.opacity = '0.7'
+    document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(0, 0, 0, 0.1) 2px dashed';
 }
 function element(t){
         setTimeout(function(){
@@ -311,6 +385,28 @@ function sms(text){
         jav.innerHTML = `<img src="${ll}" alt="">`
         localStorage.setItem('imgurl',ll)
     }
+// - - - TASKER
+
+
+// localStorage.setItem('tasker','')
+
+if (text.split('=')[0]=='task'){
+    listTasker.push(text.split('=')[1])
+    if(text.split('=')[1]!=''){
+    stringTasker+=`<div class="task">
+                        <div class="circle"></div>
+                        <div class="circle_desc">${text.split('=')[1]}</div>
+                    </div>`
+    localStorage.setItem('tasker',localStorage.getItem('tasker')+'/'+text.split('=')[1])
+
+}
+    document.getElementsByClassName('tasks')[0].innerHTML=stringTasker
+    cir()
+
+}
+
+
+//
     if (text.split('')[0] == 'f' & text.split('')[1] == '/'){
         t = text.split('/')[1]
         if (/^\d+$/.test(t) == true){
