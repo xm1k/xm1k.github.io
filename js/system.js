@@ -135,20 +135,11 @@ circles.forEach((object, index) => {
 
     object.classList.add('click-listener-added');
     object.addEventListener('click', () => {
-    blink(100)
-    setTimeout(function(){blink(100)}, 250)
+    blink()
     let klik = new Audio()
     klik.src = './sounds/klik.mp3'
     klik.volume=0.3
     klik.autoplay = true
-    setTimeout(function(){
-
-        let klik = new Audio()
-        klik.src = './sounds/klik.mp3'
-        klik.volume=0.3
-        klik.autoplay = true
-
-    }, 250)
     document.getElementsByClassName('task')[index].style.marginRight=`-${ document.getElementsByClassName('task')[index].offsetWidth}px`
     document.getElementsByClassName('task')[index].style.opacity='0'
     setTimeout(function(){
@@ -205,10 +196,6 @@ document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
 //
 jav.innerHTML = `<img src="${localStorage.getItem('imgurl')}" alt="">`
 
-if(localStorage.getItem('theme') == undefined){
-    localStorage.setItem('theme', 'false')
-}
-let theme = localStorage.getItem('theme')
 //
 let allfunctions = localStorage.getItem('allf')
 setTimeout(function(){mails.scrollTop = mails.scrollHeight}, 100)
@@ -236,7 +223,6 @@ document.addEventListener('keydown', (ev) => {
 document.onkeyup = function(event){
     if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
         search.value = ''
-        alert(listTasker)
     }
 
 
@@ -348,60 +334,10 @@ function web(t){
     mails.scrollTop = mails.scrollHeight
     let audio = new Audio()
     audio.src = './sounds/sound.mp3'
-    audio.volume=0.3
+    audio.volume=0.2
     audio.autoplay = true
 }
-function them(){
-    if(theme == 'true'){
-        document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
-        document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
-        document.getElementsByClassName('logo')[0].style.border =  '2px rgba(206,206,206,0.4) solid'
-        document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
-        document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
-        document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
-        document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
-        document.getElementsByClassName('chup')[0].style.opacity = '1'
-        document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(250,250,250,0.1) 2px dashed';
-        localStorage.setItem('theme', 'false')
-        theme = 'false'
-    }
-    else if(theme == 'false'){
-        document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
-        document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
-        document.getElementsByClassName('logo')[0].style.border =  '2px rgba(0, 0, 0, 0.4) solid'
-        document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
-        document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
-        document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
-        document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
-        document.getElementsByClassName('chup')[0].style.opacity = '0.7'
-        document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(0, 0, 0, 0.1) 2px dashed';
-        localStorage.setItem('theme', 'true')
-        theme = 'true'
-    }
-}
-if(theme == 'false'){
-    document.getElementsByTagName('body')[0].style.color = 'rgba(206,206,206,0.7)'
-    document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0.9)'
-    document.getElementsByClassName('logo')[0].style.border =  '2px rgba(206,206,206,0.4) solid'
-    document.getElementsByClassName('logoimg')[0].src = 'img/1con.webp'
-    document.getElementsByClassName('clock')[0].style.border =  '2px rgba(206,206,206,0.7) solid'
-    document.getElementsByTagName('input')[0].style.color = 'rgba(206,206,206,1)'
-    document.getElementsByClassName('linn')[0].style.backgroundColor = 'white'
-    document.getElementsByClassName('chup')[0].style.opacity = '1'
-    document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(250,250,250,0.1) 2px dashed';
 
-}
-else if(theme == 'true'){
-    document.getElementsByTagName('body')[0].style.color = 'rgba(0, 0, 0, 0.5)'
-    document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(0,0,0,0)'
-    document.getElementsByClassName('logo')[0].style.border =  '2px rgba(0, 0, 0, 0.4) solid'
-    document.getElementsByClassName('logoimg')[0].src = 'img/icon.webp'
-    document.getElementsByClassName('clock')[0].style.border =  '2px rgba(0, 0, 0, 0.2) solid'
-    document.getElementsByTagName('input')[0].style.color = 'rgba(0, 0, 0, 0.5)'
-    document.getElementsByClassName('linn')[0].style.backgroundColor = 'black'
-    document.getElementsByClassName('chup')[0].style.opacity = '0.7'
-    document.getElementsByClassName('nav')[0].style.borderBottom = 'rgba(0, 0, 0, 0.1) 2px dashed';
-}
 function element(t){
         setTimeout(function(){
         string+=t
@@ -410,7 +346,7 @@ function element(t){
         mails.scrollTop = mails.scrollHeight
         let audio = new Audio()
         audio.src = './sounds/sound.mp3'
-        audio.volume=0.3
+        audio.volume=0.2
         audio.autoplay = true
     },0)}
 function random(min, max) {
@@ -628,7 +564,7 @@ if(text.toLowerCase() == 'color'){
     mails.innerHTML=string+colors
     let audio = new Audio()
     audio.src = './sounds/sound.mp3'
-    audio.volume=0.3
+    audio.volume=0.2
     audio.autoplay = true
     setTimeout(function(){
         document.getElementsByClassName('ee0a0a')[0].onclick=function(){
@@ -1023,9 +959,6 @@ if(text.toLowerCase() == 'color'){
     wait('Ты чего...')
 }   
 
-if(text == 'theme'){
-    them()
-}
 if(text == 'spider'){
     spider()
 }

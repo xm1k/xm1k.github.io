@@ -11,12 +11,14 @@
 }
 body {
   font-family: Nunito;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(206,206,206,0.7);
+  background-color: rgba(0,0,0,0.9)
 }
 .chup{
   position: fixed;
   top: -80px;
   left: 350px;
+  opacity: 1;
 }
 ::selection {
 background: rgba(79,79,79,1);
@@ -34,6 +36,7 @@ color: rgba(144,235,230,1);
   opacity: 0.3;
   margin-top: -200px;
   z-index: 4;
+  background-color: white;
   }
 .chup img{
   position: relative;
@@ -65,7 +68,7 @@ color: rgba(144,235,230,1);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: rgba(0, 0, 0, 0.1) 2px dashed;
+  border-bottom: rgba(250,250,250,0.1) 2px dashed
 }
 .nav .logo {
   margin-left: 20px;
@@ -77,12 +80,13 @@ color: rgba(144,235,230,1);
      object-position: center;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px rgba(0, 0, 0, 0.4) solid;
+  border: 2px rgba(206,206,206,0.4) solid;
 }
 .nav .logo img {
   width: 100%;
   height: 100%;
   opacity: 0.5;
+
 }
 .nav__title {
   margin-left: 20px;
@@ -188,6 +192,7 @@ color: rgba(144,235,230,1);
   border-radius: 20px;
   font-size: 200%;
   border: rgba(0, 0, 0, 0.2) 3px solid;
+  color: rgba(206,206,206,1);
 }
 
 img {
@@ -249,6 +254,7 @@ a:hover {
       user-select: none;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+  border: 2px rgba(206,206,206,0.7) solid;
 }
 .clock:hover {
   -webkit-transition-duration: 0.3s;
