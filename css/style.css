@@ -12,7 +12,6 @@
 body {
   font-family: Nunito;
   color: rgba(0, 0, 0, 0.5);
-  cursor: url('/img/default.cur'),auto;
 }
 .chup{
   position: fixed;
@@ -243,7 +242,6 @@ a:hover {
   height: 10%;
   border-radius: 15px;
   border: rgba(0, 0, 0, 0.2) solid;
-  cursor: url('/img/alt.cur'),auto;
   -moz-user-select: -moz-none;
   -o-user-select: none;
   -webkit-user-select: none;
@@ -299,6 +297,9 @@ a:hover {
   font-weight: bold;
   opacity: 0.5;
   color: rgba(206,206,206,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .tasks{
   width: 100%;
@@ -321,7 +322,28 @@ a:hover {
   border-radius: 9px;
   max-height: auto;
   transition-duration: 0.3s;
-
+}
+.eye{
+  width: 25px;
+  height: 25px;
+  background-color: rgba(206,206,206,0.6);
+  border-radius: 100%;
+  margin-right: 2px;
+  margin-left: 5px;
+  transition: 0.15s;
+  margin-bottom: 3px;
+  rotate: 180deg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: clip;
+}
+.pup{
+  width: 17px;
+  height: 17px;
+  background-color: rgba(79,79,79,1);
+  border-radius: 50%;
+  transition: 0.3s;
 }
 .task .circle {
   margin-top: 12px;
@@ -333,7 +355,7 @@ a:hover {
   margin-left: 20px;
   border-radius: 50%;
   opacity: 0.2;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
   border: 3px rgba(0,0,0,0) dashed;
 }
 .task .circle:hover {
@@ -397,7 +419,6 @@ a:hover {
   height: 60px;
   margin: 20px;
   border-radius: 50%;
-  cursor: url('/img/alt.cur'),auto;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
   border: rgba(0, 0, 0, 0) 2px solid;

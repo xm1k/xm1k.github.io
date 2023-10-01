@@ -1,5 +1,6 @@
 let search = document.getElementsByClassName('search')[0]
 let mails = document.getElementsByClassName('mails')[0]
+let tasker = document.getElementsByClassName('tasker')[0]
 string = ''
 let work = false
 let time = document.getElementById('time')
@@ -37,12 +38,74 @@ window.onload = function() {
             search.focus();
         };
 
+// - - - IS MOUSE OVER
+
+let lastEyeTime = 0
+
+let eyeDelay = 1000
+
+tasker.addEventListener('mouseenter',function(){
+    let currentEyeTime=Date.now()
+    if (currentEyeTime-lastEyeTime>=eyeDelay){
+        blink()
+        lastEyeTime=currentEyeTime
+    }
+    eyefunc = setInterval(function(){
+            let eyerand=random(0,5)
+
+            if(eyerand==1||eyerand==0){
+                pup();
+            }
+            if(eyerand==2){
+                blink()
+            }
+}, 1000)
+
+})
+tasker.addEventListener('mouseleave',function(){
+    clearInterval(eyefunc)
+    eyefunc = undefined
+})
+
+// - - -EYE - - -
+
+blink = function(blinkspeed=150){
+    document.getElementsByClassName('eye')[0].style.height='5px'
+    setTimeout(function(){document.getElementsByClassName('eye')[0].style.height='25px'}, blinkspeed)
+}
+
+// - - - PUP - - -
+
+pup = function(){
+    let puph=random(-10,10)
+    let pups=random(-10,10)
+    if(puph>=0){
+        document.getElementsByClassName('pup')[0].style.marginBottom=`${puph}px`
+    }
+    if(puph<0){
+        document.getElementsByClassName('pup')[0].style.marginTop=`${-puph}px`
+    }
+    if(pups>=0){
+        document.getElementsByClassName('pup')[0].style.marginRight=`${pups}px`
+    }
+    if(pups<0){
+        document.getElementsByClassName('pup')[0].style.marginLeft=`${-pups}px`
+    }
+    setTimeout(function(){
+        document.getElementsByClassName('pup')[0].style.margin=`0px`
+    }, 1000)
+}
+// - - - EYE FUNC - - -
+
+
+
 // - - - TASKER - - -
 
 
 if(localStorage.getItem('tasker')==undefined){
     localStorage.setItem('tasker','')
 }
+
 
 tasker=localStorage.getItem('tasker')
 listTasker=[]
@@ -58,7 +121,7 @@ listTasker.forEach(function(item, index, array){
     if(item!=''){
     stringTasker+=`<div class="task">
                         <div class="circle"></div>
-                        <div class="circle_desc">${item}</div>
+                        <div class="circle_desc no-focus">${item}</div>
                     </div>`}
 })}
 document.getElementsByClassName('tasks')[0].innerHTML=stringTasker
@@ -72,6 +135,20 @@ circles.forEach((object, index) => {
 
     object.classList.add('click-listener-added');
     object.addEventListener('click', () => {
+    blink(100)
+    setTimeout(function(){blink(100)}, 250)
+    let klik = new Audio()
+    klik.src = './sounds/klik.mp3'
+    klik.volume=0.3
+    klik.autoplay = true
+    setTimeout(function(){
+
+        let klik = new Audio()
+        klik.src = './sounds/klik.mp3'
+        klik.volume=0.3
+        klik.autoplay = true
+
+    }, 250)
     document.getElementsByClassName('task')[index].style.marginRight=`-${ document.getElementsByClassName('task')[index].offsetWidth}px`
     document.getElementsByClassName('task')[index].style.opacity='0'
     setTimeout(function(){
@@ -88,7 +165,7 @@ circles.forEach((object, index) => {
         if(item!=''){
         stringTasker+=`<div class="task">
                             <div class="circle"></div>
-                            <div class="circle_desc">${item}</div>
+                            <div class="circle_desc no-focus">${item}</div>
                         </div>`}
     })
 
@@ -271,6 +348,7 @@ function web(t){
     mails.scrollTop = mails.scrollHeight
     let audio = new Audio()
     audio.src = './sounds/sound.mp3'
+    audio.volume=0.3
     audio.autoplay = true
 }
 function them(){
@@ -332,6 +410,7 @@ function element(t){
         mails.scrollTop = mails.scrollHeight
         let audio = new Audio()
         audio.src = './sounds/sound.mp3'
+        audio.volume=0.3
         audio.autoplay = true
     },0)}
 function random(min, max) {
@@ -395,7 +474,7 @@ if (text.split('=')[0]=='task'){
     if(text.split('=')[1]!=''){
     stringTasker+=`<div class="task">
                         <div class="circle"></div>
-                        <div class="circle_desc">${text.split('=')[1]}</div>
+                        <div class="circle_desc no-focus">${text.split('=')[1]}</div>
                     </div>`
     localStorage.setItem('tasker',localStorage.getItem('tasker')+'/'+text.split('=')[1])
 
@@ -549,6 +628,7 @@ if(text.toLowerCase() == 'color'){
     mails.innerHTML=string+colors
     let audio = new Audio()
     audio.src = './sounds/sound.mp3'
+    audio.volume=0.3
     audio.autoplay = true
     setTimeout(function(){
         document.getElementsByClassName('ee0a0a')[0].onclick=function(){
