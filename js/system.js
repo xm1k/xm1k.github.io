@@ -14,14 +14,34 @@ let now = new Date()
 let hours = ('0' + now.getHours()).slice(-2);
 let minutes = ('0' + now.getMinutes()).slice(-2);
 let seconds = ('0' + now.getSeconds()).slice(-2);
+let clock = true
 time.innerHTML = `${hours}:${minutes}:${seconds}`
+
+// - - CLOCK - -
 setInterval(function(){
+    if(clock==true){
     now = new Date()
     let hours = ('0' + now.getHours()).slice(-2);
     let minutes = ('0' + now.getMinutes()).slice(-2);
     let seconds = ('0' + now.getSeconds()).slice(-2);
-    time.innerHTML = `${hours}:${minutes}:${seconds}` 
+    time.innerHTML = `${hours}:${minutes}:${seconds}` }
 }, 1000)
+let ms=0
+setInterval(function(){
+    if(clock==false){
+        ms+=1
+        let clst = `${ms}`
+        if((ms-ms%60)/60>0){
+            clst=`${(ms-ms%60)/60}:${('0'+ms%60).slice(-2)}`
+        }
+        if((ms-ms%3600)/3600>0){
+            clst=`${(ms-ms%3600)/3600}:${('0'+(ms%3600-ms%60)/60).slice(-2)}:${('0'+ms%60).slice(-2)}`
+        }
+
+        time.innerHTML = `${clst}`
+    }
+}, 1000)
+//
 if(localStorage.getItem('allf') == undefined){
     localStorage.setItem('allf', '')
 }
@@ -66,6 +86,23 @@ tasker.addEventListener('mouseleave',function(){
     clearInterval(eyefunc)
     eyefunc = undefined
 })
+// - - CLICK CLOCK - -
+
+document.getElementsByClassName('clock')[0].addEventListener('click', () => {
+    if(clock==true){
+        ms=0
+        clock=false
+        timer.innerHTML='0'
+    }
+    else if(clock==false){
+        clock=true
+        now = new Date()
+        let hours = ('0' + now.getHours()).slice(-2);
+        let minutes = ('0' + now.getMinutes()).slice(-2);
+        let seconds = ('0' + now.getSeconds()).slice(-2);
+        time.innerHTML = `${hours}:${minutes}:${seconds}`
+    }
+})
 
 // - - -EYE - - -
 
@@ -106,7 +143,6 @@ if(localStorage.getItem('tasker')==undefined){
     localStorage.setItem('tasker','')
 }
 
-
 tasker=localStorage.getItem('tasker')
 listTasker=[]
 tasker.split('/').forEach(function(item, index, array){
@@ -116,7 +152,7 @@ tasker.split('/').forEach(function(item, index, array){
 })
 stringTasker=''
 
-if(listTasker.length>1){
+if(listTasker.length>=1){
 listTasker.forEach(function(item, index, array){
     if(item!=''){
     stringTasker+=`<div class="task">
@@ -128,6 +164,16 @@ document.getElementsByClassName('tasks')[0].innerHTML=stringTasker
 
 // Обработчик нажатий
 cir=function(){
+if(localStorage.getItem('tasker')==''){
+    document.getElementsByClassName('tasker')[0].style.height = '7%'
+    document.getElementsByClassName('tasker')[0].style.top = '75%'
+    document.getElementsByClassName('tasker')[0].style.opacity = '0'
+}
+if(localStorage.getItem('tasker')!=''){
+    document.getElementsByClassName('tasker')[0].style.top = '12%'
+    document.getElementsByClassName('tasker')[0].style.height = '68%'
+    document.getElementsByClassName('tasker')[0].style.opacity = '1'
+}
 let circle = document.getElementsByClassName('circle')
 let circles = Array.from(circle);
 circles.forEach((object, index) => {
@@ -405,7 +451,7 @@ function sms(text){
 
 // localStorage.setItem('tasker','')
 
-if (text.split('=')[0]=='task'){
+if (text.replace(/\s/g, "").split('=')[0]=='task'){
     listTasker.push(text.split('=')[1])
     if(text.split('=')[1]!=''){
     stringTasker+=`<div class="task">
@@ -422,6 +468,15 @@ if (text.split('=')[0]=='task'){
 
 
 //
+
+if (text=='rs'){
+    web(localStorage.getItem('tasker'))
+}
+if (text=='reset'){
+    localStorage.setItem('tasker','')
+    web('done')
+}
+
     if (text.split('')[0] == 'f' & text.split('')[1] == '/'){
         t = text.split('/')[1]
         if (/^\d+$/.test(t) == true){

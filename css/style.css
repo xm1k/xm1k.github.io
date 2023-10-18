@@ -283,6 +283,7 @@ a:hover {
   border-radius: 20px;
 }
 .tasker{
+  transition-duration: 1s;
   position: fixed;
   right: 1.5%;
   top: 12%;
