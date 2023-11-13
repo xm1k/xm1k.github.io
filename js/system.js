@@ -92,7 +92,8 @@ document.getElementsByClassName('clock')[0].addEventListener('click', () => {
     if(clock==true){
         ms=0
         clock=false
-        timer.innerHTML='0'
+        document.getElementsByClassName('timer')[0].innerHTML='0'
+        document.getElementsByClassName('clock')[0].style.backgroundColor = 'rgba(79,79,79,0.6)'
     }
     else if(clock==false){
         clock=true
@@ -100,7 +101,8 @@ document.getElementsByClassName('clock')[0].addEventListener('click', () => {
         let hours = ('0' + now.getHours()).slice(-2);
         let minutes = ('0' + now.getMinutes()).slice(-2);
         let seconds = ('0' + now.getSeconds()).slice(-2);
-        time.innerHTML = `${hours}:${minutes}:${seconds}`
+        document.getElementsByClassName('clock')[0].style.backgroundColor=''
+        document.getElementsByClassName('timer')[0].innerHTML = `${hours}:${minutes}:${seconds}`
     }
 })
 
@@ -270,9 +272,6 @@ document.onkeyup = function(event){
     if(event.keyCode == 74 & search.value.toLowerCase() == 'порно'){
         search.value = ''
     }
-
-
-
 
 
     if (event.keyCode === 191 && search.value.toLowerCase().charAt(search.value.length - 2) === '.') {
@@ -562,7 +561,6 @@ if(text.split('=')[0]=='spidr'){
     localStorage.setItem('spidl', spidl)
     document.getElementsByClassName('chup')[0].style.left=`${spidl}px`
 }
-if(text == ')'){web('<3')}
 
 if(text.toLowerCase()=='srch' & srch=='off'){
     srch='on'

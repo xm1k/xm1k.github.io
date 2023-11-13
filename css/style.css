@@ -260,6 +260,7 @@ a:hover {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
   bottom: 4%;
+  cursor: pointer;
 }
 
 
