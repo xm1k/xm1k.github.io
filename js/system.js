@@ -10,6 +10,9 @@ let dog = document.getElementsByClassName('chup')[0]
 if(localStorage.getItem('scroll') == undefined){
     localStorage.setItem('scroll', true)
 }
+if(localStorage.getItem('game') == undefined){
+    localStorage.setItem('game', 'false')
+}
 let now = new Date()
 let hours = ('0' + now.getHours()).slice(-2);
 let minutes = ('0' + now.getMinutes()).slice(-2);
@@ -53,6 +56,7 @@ srch = localStorage.getItem('srch')
 if(localStorage.getItem('spidl') == undefined){
     localStorage.setItem('spidl', 350)
 }
+
 
 window.onload = function() {
             search.focus();
@@ -922,6 +926,15 @@ if(text.toLowerCase() == 'color'){
             window.open(['https://youtube.com'])
         }, 100)
     }
+    if(text == 'game'){
+        web(t = 'Секунду...')
+        element(t = `<div id="canvas" class="game">
+                <canvas id="MMFCanvas" width="640" height="480">
+                    <p>Your browser does not support Canvas.</p>
+                </canvas> </div> `)
+        localStorage.setItem('game', 'true')
+        location.reload();
+    }
     if(text == 'thx'){
         wait('For developer)', 1)
     }
@@ -933,6 +946,9 @@ if(text.toLowerCase() == 'color'){
         web(t = `setTimeout(function(){}, ${m})`)
         clip(t)
         web('Copied')
+    }
+    if(text=='string'){
+        clip(localStorage.getItem('string'))
     }
     if(text.split('')[0] == 'i' & text.split('')[1] == 'n'){
         let m = 1000
