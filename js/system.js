@@ -926,15 +926,6 @@ if(text.toLowerCase() == 'color'){
             window.open(['https://youtube.com'])
         }, 100)
     }
-    if(text == 'game'){
-        web(t = 'Секунду...')
-        element(t = `<div id="canvas" class="game">
-                <canvas id="MMFCanvas" width="640" height="480">
-                    <p>Your browser does not support Canvas.</p>
-                </canvas> </div> `)
-        localStorage.setItem('game', 'true')
-        location.reload();
-    }
     if(text == 'thx'){
         wait('For developer)', 1)
     }
