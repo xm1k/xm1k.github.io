@@ -262,9 +262,11 @@ async function clip(t) {
     await navigator.clipboard.writeText(t)
   }
 mails.innerHTML = string
-document.addEventListener("keydown", function() {
-            search.focus();
-        })
+document.addEventListener("keydown", function(event) {
+    if (!event.ctrlKey) {
+        search.focus();
+    }
+});
 document.addEventListener('keydown', (ev) => {
     if (ev.code == 'KeyS' && ev.ctrlKey) {
         ev.preventDefault()
@@ -929,27 +931,35 @@ if(text.toLowerCase() == 'color'){
     if(text == 'thx'){
         wait('For developer)', 1)
     }
-    if(text.split('')[0] == 't' & text.split('')[1] == 'o'){
-        let m = 1000
-        if(text.split('to')[1]!=''){
-            m=text.split('to')[1]
-        }
-        web(t = `setTimeout(function(){}, ${m})`)
-        clip(t)
-        web('Copied')
-    }
     if(text=='string'){
         clip(localStorage.getItem('string'))
     }
-    if(text.split('')[0] == 'i' & text.split('')[1] == 'n'){
-        let m = 1000
-        if(text.split('in')[1]!=''){
-            m=text.split('in')[1]
-        }
-        web(t = `setInterval(function(){}, ${m})`)
-        clip(t)
-        web('Copied')
+
+
+if (text.startsWith('to')||text=='to') {
+    let m = parseInt(text.substr(2));
+    if(text=='to'){
+        m=1000;
     }
+    if (!isNaN(m)) {
+        web(t = `setTimeout(function(){}, ${m})`);
+        clip(t);
+        web('Copied');
+    }
+}
+
+if (text.startsWith('in')||text=='in') {
+    let m = parseInt(text.substr(2));
+    if(text=='in'){
+        m=1000;
+    }
+    if (!isNaN(m)) {
+        web(t = `setInterval(function(){}, ${m})`);
+        clip(t);
+        web('Copied');
+    }
+}
+
         if (text == 'webbby' & work == false){
         work = true
         let r = random(1,4)
